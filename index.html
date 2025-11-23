@@ -20,7 +20,7 @@
 
         /* --- SPLASH SCREEN STYLES --- */
         .splash-screen {
-            position: fixed; /* Fixed ensures it stays put */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -35,22 +35,22 @@
             text-align: center;
             z-index: 9999;
             transition: opacity 1s ease-out;
-            padding: 20px; /* Prevents text hitting edge */
+            padding: 20px;
             box-sizing: border-box;
         }
 
         .splash-screen h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem; /* Mobile Size */
-            line-height: 1.1; /* FIXES THE OVERLAP ISSUE */
+            font-size: 4rem;
+            line-height: 1.1;
             letter-spacing: 2px;
             margin-bottom: 30px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            max-width: 800px; /* Forces wrap on wide screens */
+            max-width: 800px;
         }
 
         @media (min-width: 768px) {
-            .splash-screen h1 { font-size: 8rem; } /* Desktop Size */
+            .splash-screen h1 { font-size: 8rem; }
         }
 
         .enter-btn {
@@ -74,12 +74,53 @@
         /* --- MAIN SITE STYLES --- */
         .main-site {
             display: none; /* Hidden until splash fades */
+            flex-direction: column;
             min-height: 100vh;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: #FFA07A; /* Coral */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #008080; /* Teal */
+        }
+
+        /* CONTENT CONTAINER */
+        .content-container {
+            flex: 1; /* Pushes footer down */
+            display: flex;
             flex-direction: column;
             align-items: center;
             padding: 40px 20px;
-            background: #f4f4f4; /* Light gray background */
-            color: #333;
         }
 
         .gallery-title {
@@ -92,20 +133,20 @@
 
         .tagline {
             font-family: 'Montserrat', sans-serif;
-            color: #008080; /* Teal accent */
+            color: #008080;
             margin-bottom: 50px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* GALLERY GRID */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             width: 100%;
             max-width: 1200px;
+            margin-bottom: 50px;
         }
 
         .art-card {
@@ -114,16 +155,17 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         .art-card:hover {
-            transform: translateY(-5px); /* Lift effect */
+            transform: translateY(-5px);
         }
 
         .art-card img {
             width: 100%;
-            height: 300px; /* Fixed height for uniformity */
-            object-fit: cover; /* Crops image nicely to fit */
+            height: 300px;
+            object-fit: cover;
             display: block;
         }
 
@@ -144,6 +186,24 @@
             margin-top: 5px;
         }
 
+        /* FOOTER */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 25px;
+            background-color: #008080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -154,34 +214,54 @@
     </div>
 
     <div class="main-site" id="main">
-        <h2 class="gallery-title">MetaPainting Gallery of Wonders</h2>
-        <span class="tagline">Art is in Us All</span>
-
-        <div class="gallery-grid">
-            <div class="art-card">
-                <img src="art-1.jpg" alt="Artwork 1">
-                <div class="art-info">
-                    <h3>Coded</h3>
-                    <p>Collaborative Metapainting</p>
-                </div>
+        
+        <nav>
+            <div class="nav-logo">META PAINTING</div>
+            <div class="nav-links">
+                <a href="#">Gallery</a>
+                <a href="#">Vision</a>
+                <a href="#contact">Contact</a>
             </div>
+        </nav>
 
-            <div class="art-card">
-                <img src="art-2.jpg" alt="Artwork 2">
-                <div class="art-info">
-                    <h3>Colalflection</h3>
-                    <p>Collaborative Metapainting</p>
+        <div class="content-container">
+            <h2 class="gallery-title">Gallery of Wonders</h2>
+            <span class="tagline">Art is in Us All</span>
+
+            <div class="gallery-grid">
+                <div class="art-card">
+                    <img src="art-1.jpg" alt="Artwork 1">
+                    <div class="art-info">
+                        <h3>Yoga Man</h3>
+                        <p>Collaborative Metapainting</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="art-card">
-                <img src="art-3.jpg" alt="Artwork 3">
-                <div class="art-info">
-                    <h3>World Religion</h3>
-                    <p>Collaborative Metapainting</p>
+                <div class="art-card">
+                    <img src="art-2.jpg" alt="Artwork 2">
+                    <div class="art-info">
+                        <h3>World Religion</h3>
+                        <p>Collaborative Metapainting</p>
+                    </div>
+                </div>
+
+                <div class="art-card">
+                    <img src="art-3.jpg" alt="Artwork 3">
+                    <div class="art-info">
+                        <h3>Coded</h3>
+                        <p>Collaborative Metapainting</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <footer id="contact">
+            <h3 style="font-family: 'Bebas Neue'; font-size: 2rem;">Interested in Collaborating?</h3>
+            <p>Bring the MetaPainting experience to your venue.</p>
+            <a href="mailto:your-email@example.com" class="contact-btn">Get in Touch</a>
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #777;">&copy; 2024 MetaPainting. All Rights Reserved.</p>
+        </footer>
+
     </div>
 
     <script>
@@ -194,7 +274,6 @@
             setTimeout(() => {
                 splash.style.display = 'none';
                 main.style.display = 'flex'; 
-                // Allow scrolling after splash is gone
                 document.body.style.overflow = 'auto'; 
             }, 1000);
         }
