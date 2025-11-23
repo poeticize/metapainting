@@ -9,23 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* RESET */
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; }
         
-        /* STYLES */
+        /* GLOBAL STYLES */
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #1a1a1a;
+            color: #f4f4f4;
         }
 
-        /* SPLASH CONTAINER */
+        /* --- SPLASH SCREEN STYLES --- */
         .splash-screen {
-            position: absolute;
+            position: fixed; /* Fixed ensures it stays put */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* This loads your image and puts a dark tint over it so text pops */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('splash-bg.png');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('splash-bg.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -33,22 +33,24 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            transition: opacity 1.5s ease-out;
-            z-index: 10;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+            padding: 20px; /* Prevents text hitting edge */
+            box-sizing: border-box;
         }
 
-        h1 {
+        .splash-screen h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem; 
+            font-size: 4rem; /* Mobile Size */
+            line-height: 1.1; /* FIXES THE OVERLAP ISSUE */
             letter-spacing: 2px;
             margin-bottom: 30px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            max-width: 800px; /* Forces wrap on wide screens */
         }
 
-        /* Make text bigger on desktop */
         @media (min-width: 768px) {
-            h1 { font-size: 7rem; }
+            .splash-screen h1 { font-size: 8rem; } /* Desktop Size */
         }
 
         .enter-btn {
@@ -58,11 +60,10 @@
             padding: 15px 40px;
             font-size: 1.5rem;
             font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 2px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s, background-color 0.2s;
         }
 
         .enter-btn:hover {
@@ -70,17 +71,79 @@
             transform: scale(1.05);
         }
 
-        /* MAIN SITE PLACEHOLDER (Hidden initially) */
+        /* --- MAIN SITE STYLES --- */
         .main-site {
-            display: none; 
-            height: 100vh;
-            display: flex;
+            display: none; /* Hidden until splash fades */
+            min-height: 100vh;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: #f4f4f4;
+            padding: 40px 20px;
+            background: #f4f4f4; /* Light gray background */
             color: #333;
         }
+
+        .gallery-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .tagline {
+            font-family: 'Montserrat', sans-serif;
+            color: #008080; /* Teal accent */
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* GALLERY GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .art-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .art-card:hover {
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        .art-card img {
+            width: 100%;
+            height: 300px; /* Fixed height for uniformity */
+            object-fit: cover; /* Crops image nicely to fit */
+            display: block;
+        }
+
+        .art-info {
+            padding: 20px;
+        }
+
+        .art-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin: 0;
+            color: #333;
+        }
+
+        .art-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -91,8 +154,34 @@
     </div>
 
     <div class="main-site" id="main">
-        <h2 style="font-family: 'Bebas Neue'; font-size: 3rem;">Welcome to the MetaPainting Gallery of Wonders</h2>
-        <p>The gallery is under construction...</p>
+        <h2 class="gallery-title">MetaPainting Gallery of Wonders</h2>
+        <span class="tagline">Art is in Us All</span>
+
+        <div class="gallery-grid">
+            <div class="art-card">
+                <img src="art-1.jpg" alt="Artwork 1">
+                <div class="art-info">
+                    <h3>Coded</h3>
+                    <p>Collaborative Metapainting</p>
+                </div>
+            </div>
+
+            <div class="art-card">
+                <img src="art-2.jpg" alt="Artwork 2">
+                <div class="art-info">
+                    <h3>ColaFlection</h3>
+                    <p>Collaborative Metapainting</p>
+                </div>
+            </div>
+
+            <div class="art-card">
+                <img src="art-3.jpg" alt="Artwork 3">
+                <div class="art-info">
+                    <h3>World Religion</h3>
+                    <p>Collaborative Metapainting</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -100,14 +189,14 @@
             const splash = document.getElementById('splash');
             const main = document.getElementById('main');
             
-            // Start Fade
             splash.style.opacity = '0';
             
-            // Wait for fade (1.5s), then switch views
             setTimeout(() => {
                 splash.style.display = 'none';
                 main.style.display = 'flex'; 
-            }, 1500);
+                // Allow scrolling after splash is gone
+                document.body.style.overflow = 'auto'; 
+            }, 1000);
         }
     </script>
 
