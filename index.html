@@ -17,6 +17,7 @@
             background-color: #1a1a1a;
             color: #f4f4f4;
             line-height: 1.6;
+            transition: background-color 0.5s;
         }
 
         /* --- SPLASH SCREEN STYLES --- */
@@ -79,6 +80,7 @@
             min-height: 100vh;
             background: #f4f4f4;
             color: #333;
+            transition: background 0.5s, color 0.5s;
         }
 
         /* NAVIGATION BAR */
@@ -126,14 +128,14 @@
             text-align: center;
         }
 
-        /* ABOUT SECTION (New!) */
+        /* ABOUT SECTION */
         .about-section {
             background-color: #e8e6e1; /* Warm Beige */
             width: 100%;
-            max-width: 100%; /* Full width strip */
             padding: 60px 20px;
             display: flex;
             justify-content: center;
+            box-sizing: border-box;
         }
         
         .about-content {
@@ -146,6 +148,7 @@
             font-size: 3rem;
             color: #333;
             margin-bottom: 20px;
+            transition: color 0.5s;
         }
 
         .about-text {
@@ -162,6 +165,41 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             display: block;
+        }
+
+        /* CONTROLS */
+        .controls {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 5px;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .control-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .control-btn.active {
+            background-color: #333;
+            color: white;
+        }
+        
+        /* Special style for Blacklight button when active */
+        body.dark-mode .control-btn.active {
+            background-color: #bc13fe; /* Neon Purple */
+            color: white;
+            box-shadow: 0 0 10px #bc13fe;
         }
 
         /* GALLERY GRID */
@@ -191,11 +229,13 @@
             height: 300px;
             object-fit: cover;
             display: block;
+            transition: filter 0.5s;
         }
 
         .art-info {
             padding: 20px;
             text-align: left;
+            transition: background 0.5s;
         }
 
         .art-info h3 {
@@ -203,13 +243,27 @@
             font-size: 1.8rem;
             margin: 0;
             color: #333;
+            transition: color 0.5s;
         }
 
         .art-info p {
             font-size: 0.9rem;
             color: #666;
             margin-top: 5px;
+            transition: color 0.5s;
         }
+
+        /* DARK MODE STYLES (Blacklight) */
+        body.dark-mode .main-site {
+            background: #111; /* Very dark gray */
+            color: #eee;
+        }
+        body.dark-mode .section-title { color: #eee; }
+        body.dark-mode .art-card { background: #222; }
+        body.dark-mode .art-info h3 { color: #fff; }
+        body.dark-mode .art-info p { color: #bbb; }
+        body.dark-mode .about-section { background: #222; }
+        body.dark-mode .about-text { color: #ddd; }
 
         /* FOOTER */
         footer {
@@ -223,107 +277,4 @@
             display: inline-block;
             margin-top: 10px;
             padding: 10px 25px;
-            background-color: #008080;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .contact-btn:hover {
-            background-color: #FFA07A;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="splash-screen" id="splash">
-        <h1>Be a Part of the Art</h1>
-        <button class="enter-btn" onclick="enterSite()">Enter Gallery</button>
-    </div>
-
-    <div class="main-site" id="main">
-        
-        <nav>
-            <div class="nav-logo">META PAINTING</div>
-            <div class="nav-links">
-                <a href="#vision">Vision</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
-
-        <section class="about-section" id="vision">
-            <div class="about-content">
-                <h2 class="section-title">The Art of Elaborate Collaboration</h2>
-                <p class="about-text">
-                    Meta-painting is not just about the final image; it is about the story of its creation. 
-                    Every piece features dozens, sometimes hundreds, of participants. 
-                    From "Yoga Man" to "World Religion," these works capture the energy of the crowd.
-                </p>
-                <p class="about-text">
-                    <strong>It might look busy, but that's the point.</strong> It is the texture of human connection.
-                    <br><br>
-                    <span style="font-size: 1.4rem; color: #008080; font-weight: bold;">"Art is in Us All"</span>
-                </p>
-            </div>
-        </section>
-
-        <div class="section-container" id="gallery">
-            <h2 class="section-title">Gallery of Wonders</h2>
-            <span class="tagline">Explore the Collection</span>
-
-            <div class="gallery-grid">
-                <div class="art-card">
-                    <img src="art-1.jpg" alt="Artwork 1">
-                    <div class="art-info">
-                        <h3>Yoga Man</h3>
-                        <p>Approx 60 Participants</p>
-                    </div>
-                </div>
-
-                <div class="art-card">
-                    <img src="art-2.jpg" alt="Artwork 2">
-                    <div class="art-info">
-                        <h3>World Religion</h3>
-                        <p>Featuring Infinity Mirror</p>
-                    </div>
-                </div>
-
-                <div class="art-card">
-                    <img src="art-3.jpg" alt="Artwork 3">
-                    <div class="art-info">
-                        <h3>Coded</h3>
-                        <p>DNA & Phosphorescence</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer id="contact">
-            <h3 style="font-family: 'Bebas Neue'; font-size: 2rem;">Interested in Collaborating?</h3>
-            <p>Bring the MetaPainting experience to your venue.</p>
-            <a href="mailto:your-email@example.com" class="contact-btn">Get in Touch</a>
-            <p style="margin-top: 30px; font-size: 0.8rem; color: #777;">&copy; 2024 MetaPainting. All Rights Reserved.</p>
-        </footer>
-
-    </div>
-
-    <script>
-        function enterSite() {
-            const splash = document.getElementById('splash');
-            const main = document.getElementById('main');
-            
-            splash.style.opacity = '0';
-            
-            setTimeout(() => {
-                splash.style.display = 'none';
-                main.style.display = 'flex'; 
-                document.body.style.overflow = 'auto'; 
-            }, 1000);
-        }
-    </script>
-
-</body>
-</html>
+            background-color: #00
