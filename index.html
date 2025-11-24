@@ -16,6 +16,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #1a1a1a;
             color: #f4f4f4;
+            line-height: 1.6;
         }
 
         /* --- SPLASH SCREEN STYLES --- */
@@ -73,7 +74,7 @@
 
         /* --- MAIN SITE STYLES --- */
         .main-site {
-            display: none; /* Hidden until splash fades */
+            display: none;
             flex-direction: column;
             min-height: 100vh;
             background: #f4f4f4;
@@ -97,7 +98,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.5rem;
             letter-spacing: 1px;
-            color: #FFA07A; /* Coral */
+            color: #FFA07A;
         }
 
         .nav-links a {
@@ -111,42 +112,65 @@
         }
 
         .nav-links a:hover {
-            color: #008080; /* Teal */
+            color: #008080;
         }
 
-        /* CONTENT CONTAINER */
-        .content-container {
-            flex: 1; /* Pushes footer down */
+        /* CONTENT SECTIONS */
+        .section-container {
+            padding: 60px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .gallery-title {
+        /* ABOUT SECTION (New!) */
+        .about-section {
+            background-color: #e8e6e1; /* Warm Beige */
+            width: 100%;
+            max-width: 100%; /* Full width strip */
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .section-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
             color: #333;
-            margin-bottom: 10px;
-            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
         }
 
         .tagline {
             font-family: 'Montserrat', sans-serif;
             color: #008080;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: block;
         }
 
+        /* GALLERY GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             width: 100%;
-            max-width: 1200px;
-            margin-bottom: 50px;
+            margin-top: 30px;
         }
 
         .art-card {
@@ -171,6 +195,7 @@
 
         .art-info {
             padding: 20px;
+            text-align: left;
         }
 
         .art-info h3 {
@@ -203,6 +228,11 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #FFA07A;
         }
     </style>
 </head>
@@ -218,22 +248,38 @@
         <nav>
             <div class="nav-logo">META PAINTING</div>
             <div class="nav-links">
-                <a href="#">Gallery</a>
-                <a href="#">Vision</a>
+                <a href="#vision">Vision</a>
+                <a href="#gallery">Gallery</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
 
-        <div class="content-container">
-            <h2 class="gallery-title">Gallery of Wonders</h2>
-            <span class="tagline">Art is in Us All</span>
+        <section class="about-section" id="vision">
+            <div class="about-content">
+                <h2 class="section-title">The Art of Elaborate Collaboration</h2>
+                <p class="about-text">
+                    Meta-painting is not just about the final image; it is about the story of its creation. 
+                    Every piece features dozens, sometimes hundreds, of participants. 
+                    From "Yoga Man" to "World Religion," these works capture the energy of the crowd.
+                </p>
+                <p class="about-text">
+                    <strong>It might look busy, but that's the point.</strong> It is the texture of human connection.
+                    <br><br>
+                    <span style="font-size: 1.4rem; color: #008080; font-weight: bold;">"Art is in Us All"</span>
+                </p>
+            </div>
+        </section>
+
+        <div class="section-container" id="gallery">
+            <h2 class="section-title">Gallery of Wonders</h2>
+            <span class="tagline">Explore the Collection</span>
 
             <div class="gallery-grid">
                 <div class="art-card">
                     <img src="art-1.jpg" alt="Artwork 1">
                     <div class="art-info">
                         <h3>Yoga Man</h3>
-                        <p>Collaborative Metapainting</p>
+                        <p>Approx 60 Participants</p>
                     </div>
                 </div>
 
@@ -241,7 +287,7 @@
                     <img src="art-2.jpg" alt="Artwork 2">
                     <div class="art-info">
                         <h3>World Religion</h3>
-                        <p>Collaborative Metapainting</p>
+                        <p>Featuring Infinity Mirror</p>
                     </div>
                 </div>
 
@@ -249,7 +295,7 @@
                     <img src="art-3.jpg" alt="Artwork 3">
                     <div class="art-info">
                         <h3>Coded</h3>
-                        <p>Collaborative Metapainting</p>
+                        <p>DNA & Phosphorescence</p>
                     </div>
                 </div>
             </div>
