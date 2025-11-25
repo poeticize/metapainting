@@ -10,7 +10,7 @@
         .nav-bar { padding: 20px; background: #333; text-align: center; }
         .back-link { color: #FFA07A; text-decoration: none; font-weight: bold; text-transform: uppercase; }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; text-align: center; }
         h1 { font-family: 'Bebas Neue'; font-size: 4rem; margin-bottom: 10px; }
         p { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; }
         
@@ -18,12 +18,20 @@
         .story-step img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .step-label { font-family: 'Bebas Neue'; font-size: 2rem; color: #008080; margin-top: 20px; display: block; }
         .step-desc { font-size: 1rem; color: #999; max-width: 600px; margin: 10px auto; }
+
+        /* Grid for 3 images */
+        .tri-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 768px) { .tri-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div class="nav-bar">
-        <a href="index.html" class="back-link">← Back to Gallery</a>
+        <a href="index.html#gallery" class="back-link">← Back to Gallery</a>
     </div>
 
     <div class="container">
@@ -32,25 +40,29 @@
 
         <div class="story-step">
             <span class="step-label">Phase 1: The Structure</span>
-            <img src="coded-unpainted.jpg" style="filter: grayscale(100%);" alt="Phase 1: Unpainted Canvas">
+            <img src="coded-unpainted.jpg" style="filter: grayscale(100%); max-width: 600px;" alt="Phase 1: Unpainted Canvas">
             <p class="step-desc">The initial canvas established the double helix structure before the chaos of collaboration began.</p>
         </div>
 
         <div class="story-step">
             <span class="step-label">Phase 2: The Crowd</span>
-            <img src="coded-progress.jpg" onerror="this.src='art-1.jpg'" alt="Phase 2: In Progress">
+            <div class="tri-grid">
+                <img src="coded-progress1.jpg" alt="Progress 1">
+                <img src="coded-progress2.jpg" alt="Progress 2">
+                <img src="coded-progress3.jpg" alt="Progress 3">
+            </div>
             <p class="step-desc">Over 60 participants added their own genetic code to the painting, creating layers of complexity.</p>
         </div>
 
         <div class="story-step">
             <span class="step-label">Phase 3: Final State</span>
-            <img src="art-1.jpg" alt="Final Piece">
+            <img src="art-1.jpg" style="max-width: 800px;" alt="Final Piece">
             <p class="step-desc">The completed work.</p>
         </div>
         
          <div class="story-step">
             <span class="step-label">Phase 4: Bioluminescence</span>
-            <img src="art-1-dark.jpg" alt="Blacklight View">
+            <img src="art-1-dark.jpg" style="max-width: 800px;" alt="Blacklight View">
             <p class="step-desc">Under blacklight, the hidden DNA strands glow.</p>
         </div>
 
