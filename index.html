@@ -393,6 +393,22 @@
                 document.getElementById('img-3').src = 'art-3.jpg';
             }
         }
+
+        // NEW: Check if user is coming from a "Back" link
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if (window.location.hash === '#gallery') {
+                // Kill splash immediately
+                const splash = document.getElementById('splash');
+                const main = document.getElementById('main');
+                splash.style.display = 'none';
+                main.style.display = 'flex';
+                document.body.style.overflow = 'auto';
+                
+                // Scroll to gallery
+                const gallerySection = document.getElementById('gallery');
+                if (gallerySection) gallerySection.scrollIntoView();
+            }
+        });
     </script>
 
 </body>
