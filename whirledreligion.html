@@ -10,7 +10,7 @@
         .nav-bar { padding: 20px; background: #333; text-align: center; }
         .back-link { color: #FFA07A; text-decoration: none; font-weight: bold; text-transform: uppercase; }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; text-align: center; }
         h1 { font-family: 'Bebas Neue'; font-size: 4rem; margin-bottom: 10px; }
         p { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; }
         
@@ -18,6 +18,14 @@
         .story-step img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .step-label { font-family: 'Bebas Neue'; font-size: 2rem; color: #008080; margin-top: 20px; display: block; }
         .step-desc { font-size: 1rem; color: #999; max-width: 600px; margin: 10px auto; }
+
+        /* NEW: Hex Grid for Phase 2 */
+        .hex-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 across */
+            gap: 15px;
+        }
+        @media (max-width: 768px) { .hex-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -32,13 +40,20 @@
 
         <div class="story-step">
             <span class="step-label">Phase 1: The Blueprint</span>
-            <img src="religion-unpainted.jpg" onerror="this.src='art-3.jpg'" style="filter: grayscale(100%);" alt="Phase 1">
-            <p class="step-desc">The geometric layout established the six houses of worship before the color began.</p>
+            <img src="religion-unpainted.jpg" onerror="this.src='art-3.jpg'" style="filter: grayscale(100%); max-width: 800px;" alt="Phase 1">
+            <p class="step-desc">The geometric layout established the six houses of worship.</p>
         </div>
 
         <div class="story-step">
             <span class="step-label">Phase 2: The Congregation</span>
-            <img src="religion-progress.jpg" onerror="this.src='art-3.jpg'" alt="Phase 2">
+            <div class="hex-grid">
+                <img src="whirledreligion-progress1.jpg" alt="Progress 1">
+                <img src="whirledreligion-progress2.jpg" alt="Progress 2">
+                <img src="whirledreligion-progress3.jpg" alt="Progress 3">
+                <img src="whirledreligion-progress4.jpg" alt="Progress 4">
+                <img src="whirledreligion-progress5.jpg" alt="Progress 5">
+                <img src="whirledreligion-progress6.jpg" alt="Progress 6">
+            </div>
             <p class="step-desc">Participants filled the flames of hell below and the skies above.</p>
         </div>
 
