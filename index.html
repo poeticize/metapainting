@@ -333,6 +333,13 @@
             </div>
 
             <div class="gallery-grid">
+                <div class="art-card" onclick="window.location.href='yogaman.html'">
+                    <img id="img-yoga" src="yogaman-final.jpg" alt="Yoga Man">
+                    <div class="art-info">
+                        <h3>Yoga Man</h3>
+                        <p>One Collective Breath</p>
+                    </div>
+                </div>
                 <div class="art-card" onclick="window.location.href='coded.html'">
                     <img id="img-1" src="art-1.jpg" alt="Coded">
                     <div class="art-info">
@@ -368,34 +375,29 @@
 
     </div>
 
-    <script>
-        function enterSite() {
-            const splash = document.getElementById('splash');
-            const main = document.getElementById('main');
-            
-            splash.style.opacity = '0';
-            
-            setTimeout(() => {
-                splash.style.display = 'none';
-                main.style.display = 'flex'; 
-                document.body.style.overflow = 'auto'; 
-            }, 1000);
-        }
-
+   <script>
         function setLight(mode, btn) {
             document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             if (mode === 'blacklight') {
                 document.body.classList.add('dark-mode');
+                // Switch to Dark Images
                 document.getElementById('img-1').src = 'art-1-dark.jpg';
                 document.getElementById('img-2').src = 'art-2-dark.jpg';
                 document.getElementById('img-3').src = 'art-3-dark.jpg';
+                // Add Yoga Man Dark (Using #1 as the main thumb)
+                const yogaImg = document.getElementById('img-yoga');
+                if(yogaImg) yogaImg.src = 'yogaman-dark1.jpg';
             } else {
                 document.body.classList.remove('dark-mode');
+                // Switch to Normal Images
                 document.getElementById('img-1').src = 'art-1.jpg';
                 document.getElementById('img-2').src = 'art-2.jpg';
                 document.getElementById('img-3').src = 'art-3.jpg';
+                // Add Yoga Man Normal
+                const yogaImg = document.getElementById('img-yoga');
+                if(yogaImg) yogaImg.src = 'yogaman-final.jpg';
             }
         }
 
@@ -411,6 +413,18 @@
                 if (gallerySection) gallerySection.scrollIntoView();
             }
         });
+        
+        // Splash Screen Enter
+        function enterSite() {
+            const splash = document.getElementById('splash');
+            const main = document.getElementById('main');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                main.style.display = 'flex'; 
+                document.body.style.overflow = 'auto'; 
+            }, 1000);
+        }
     </script>
 
 </body>
