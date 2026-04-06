@@ -3,29 +3,31 @@ title: "Whirled Religion"
 tagline: "Six Buildings. One Circle. Infinite Flames."
 featured: true
 sortOrder: 4
-tags: ["architecture", "crowd", "infinity-mirror", "blacklight"]
-thumbnail: "/paintings/whirled-religion/final.jpg"
-thumbnailDark: "/paintings/whirled-religion/dark.jpg"
+tags: ["architecture", "crowd", "infinity-mirror", "phosphorescence"]
+hasBlacklight: true
+photoAlbumUrl: "https://goo.gl/photos/eEhQ3qpyK8uJphMZA"
+thumbnail: "/paintings/whirled-religion/thumb.jpg"
+thumbnailAlt: "/paintings/whirled-religion/thumb-alt.jpg"
 phases:
-  - label: "The Blueprint"
-    description: "The geometric layout established the six houses of worship — each distinct, yet bound together in a circle. Structure as metaphor."
+  - label: "The Painting"
+    description: "Six houses of worship laid out in a geometric circle — each distinct, yet bound together. A completed underpainting establishing structure as metaphor."
     images:
-      - "unpainted.jpg"
-  - label: "The Congregation"
-    description: "Participants filled the flames of hell below and the skies above. A shared vision of faith, doubt, fire, and transcendence — painted by many hands."
+      - "02-painting-1.jpg"
+  - label: "The Collaboration"
+    description: "Participants claimed numbered sections, peeled their masks, and filled the flames below and the skies above. A shared vision of faith, doubt, fire, and transcendence — painted by many hands."
     images:
-      - "progress-1.jpg"
-      - "progress-2.jpg"
-      - "progress-3.jpg"
-      - "progress-4.jpg"
-      - "progress-5.jpg"
-      - "progress-6.jpg"
-  - label: "The Unity"
-    description: "The completed work centering on the infinity mirror — an endless reflection that pulls the viewer into the painting itself."
+      - "04-collab-1.jpg"
+      - "04-collab-2.jpg"
+      - "04-collab-3.jpg"
+      - "04-collab-4.jpg"
+      - "04-collab-5.jpg"
+      - "04-collab-6.jpg"
+  - label: "Complete"
+    description: "The finished work centering on the infinity mirror — an endless reflection that pulls the viewer into the painting itself."
     images:
-      - "final.jpg"
+      - "05-complete-1.jpg"
   - label: "The Glow"
-    description: "The hidden symbols reveal themselves in the dark. What was painted in daylight transforms under ultraviolet into something otherworldly."
+    description: "Hidden symbols reveal themselves in the dark. What was painted in daylight transforms under ultraviolet into something otherworldly."
     images:
-      - "dark.jpg"
+      - "06-effect-1.jpg"
 ---

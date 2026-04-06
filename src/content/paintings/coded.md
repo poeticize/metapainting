@@ -1,29 +1,31 @@
 ---
 title: "Coded"
 tagline: "DNA & Phosphorescence"
-participants: 60
+participants: 67
+medium: "Acrylic on wood"
 featured: true
 sortOrder: 2
-tags: ["blacklight", "science", "crowd"]
-thumbnail: "/paintings/coded/final.jpg"
-thumbnailDark: "/paintings/coded/dark.jpg"
+tags: ["science", "crowd", "phosphorescence"]
+hasBlacklight: true
+thumbnail: "/paintings/coded/thumb.jpg"
+thumbnailAlt: "/paintings/coded/thumb-alt.jpg"
 phases:
-  - label: "The Structure"
-    description: "The initial canvas established the double helix structure before the chaos of collaboration began. The blueprint of life, rendered as a framework for collective expression."
+  - label: "The Painting"
+    description: "The double helix structure was painted in full — a completed underpainting establishing the architecture of DNA before the masking and collaboration began."
     images:
-      - "unpainted.jpg"
-  - label: "The Crowd"
-    description: "Over 60 participants added their own genetic code to the painting, creating layers of complexity. Each brushstroke a unique strand woven into the collective DNA."
+      - "02-painting-1.jpg"
+  - label: "The Collaboration"
+    description: "67 participants each claimed a numbered section, peeled off the mask, and added their own strand to the painting. Layers of complexity emerged from dozens of individual contributions."
     images:
-      - "progress-1.jpg"
-      - "progress-2.jpg"
-      - "progress-3.jpg"
-  - label: "Final State"
-    description: "The completed work — a living record of shared creation."
+      - "04-collab-1.jpg"
+      - "04-collab-2.jpg"
+      - "04-collab-3.jpg"
+  - label: "Complete"
+    description: "The finished collaborative work — a living record of shared creation."
     images:
-      - "final.jpg"
+      - "05-complete-1.jpg"
   - label: "Bioluminescence"
-    description: "Under blacklight, the hidden DNA strands glow with phosphorescent life. The invisible becomes visible."
+    description: "Under blacklight, hidden DNA strands glow with phosphorescent life. The invisible layer becomes the centerpiece."
     images:
-      - "dark.jpg"
+      - "06-effect-1.jpg"
 ---

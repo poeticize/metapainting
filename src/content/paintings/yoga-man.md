@@ -2,35 +2,37 @@
 title: "Yoga Man"
 tagline: "One Collective Breath"
 participants: 60
+medium: "Acrylic on wood"
 featured: true
 sortOrder: 1
-tags: ["blacklight", "figure", "crowd"]
-thumbnail: "/paintings/yoga-man/final.jpg"
-thumbnailDark: "/paintings/yoga-man/dark-1.jpg"
+tags: ["figure", "crowd", "phosphorescence"]
+hasBlacklight: true
+thumbnail: "/paintings/yoga-man/thumb.jpg"
+thumbnailAlt: "/paintings/yoga-man/thumb-alt.jpg"
 phases:
-  - label: "The Asana"
-    description: "The figure was established in solitude, holding the pose before the energy of the crowd arrived. A single form, drawn with intention — the foundation for everything that followed."
+  - label: "The Painting"
+    description: "The figure was rendered in full — a completed underpainting of a yoga pose, holding stillness before the energy of the crowd arrived."
     images:
-      - "unpainted-1.jpg"
-      - "unpainted-2.jpg"
-      - "unpainted-3.jpg"
-      - "unpainted-4.jpg"
-  - label: "The Energy"
-    description: "Dozens of participants added their strokes, filling the form with vibrant, chaotic energy. Each person's contribution became inseparable from the whole."
+      - "02-painting-1.jpg"
+      - "02-painting-2.jpg"
+      - "02-painting-3.jpg"
+      - "02-painting-4.jpg"
+  - label: "The Collaboration"
+    description: "Approximately 60 participants each claimed a numbered section, peeled off the mask, and painted their contribution. The form filled with vibrant, chaotic energy — each person's mark inseparable from the whole."
     images:
-      - "progress-1.jpg"
-      - "progress-2.jpg"
-      - "progress-3.jpg"
-      - "progress-4.jpg"
-      - "progress-5.jpg"
-  - label: "The Balance"
-    description: "The completed work, balancing the chaos of the crowd with the stillness of the form. What emerged was not planned — it was felt."
+      - "04-collab-1.jpg"
+      - "04-collab-2.jpg"
+      - "04-collab-3.jpg"
+      - "04-collab-4.jpg"
+      - "04-collab-5.jpg"
+  - label: "Complete"
+    description: "The finished work — artist and community layered together, balancing the chaos of collaboration with the stillness of the original form."
     images:
-      - "final.jpg"
-  - label: "Inner Light"
-    description: "Under blacklight, the chakras and internal energy flow become visible. Hidden layers of phosphorescent paint glow, revealing what was always there beneath the surface."
+      - "05-complete-1.jpg"
+  - label: "Under Blacklight"
+    description: "Phosphorescent paint reveals the hidden layer — chakras and internal energy flow become visible, glowing with what was always there beneath the surface."
     images:
-      - "dark-1.jpg"
-      - "dark-2.jpg"
-      - "dark-3.jpg"
+      - "06-effect-1.jpg"
+      - "06-effect-2.jpg"
+      - "06-effect-3.jpg"
 ---

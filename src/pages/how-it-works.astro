@@ -7,7 +7,7 @@ import Hero from '../components/Hero.astro';
 
   <Hero
     title="How It Works"
-    subtitle="A step-by-step guide to creating collaborative art that engages crowds and reveals hidden layers."
+    subtitle="The MetaPainting method — from completed painting to masked surface to crowd collaboration."
     backgroundImage="/paintings/yoga-man/progress-3.jpg"
   />
 
@@ -16,11 +16,37 @@ import Hero from '../components/Hero.astro';
 
       <div class="intro reveal">
         <p class="font-serif intro__text">
-          MetaPainting is a technique and a philosophy. Every piece begins with a structural design,
-          invites dozens of participants to contribute, and culminates in a dramatic blacklight reveal.
-          Here's how to create your own.
+          MetaPainting is both a technique and a philosophy. Every piece begins as a finished painting
+          by the artist. That painting is then masked, divided into numbered shapes, and opened to the
+          crowd. Participants peel off a section, paint their contribution, and become inseparable from
+          the work. The result is a layered collaboration — artist and community, structure and freedom,
+          all woven together on one surface.
         </p>
       </div>
+
+      <div class="principles reveal">
+        <h3 class="font-display principles__title">Core Principles</h3>
+        <div class="principles__grid">
+          <div class="principle">
+            <span class="principle__label font-display">Divide the Substrate</span>
+            <p>Break the surface into distinct regions that give participants clear ownership of their area.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__label font-display">One Spot Only</span>
+            <p>Each person paints one section. This creates genuine individual stakes in a collective outcome.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__label font-display">Respect Crowd as Medium</span>
+            <p>The human is a separate layer with their own variables — prompt, mental state, time, skill, surroundings. Influence is a function.</p>
+          </div>
+          <div class="principle">
+            <span class="principle__label font-display">Always Be Learning</span>
+            <p>Every painting teaches something new. The method evolves with each piece.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
 
       <!-- STEPS -->
       <div class="steps">
@@ -30,13 +56,16 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">01</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">Concept & Design</h3>
-            <p>Start with a theme that resonates with your group. The design should have clear structure —
-            bold outlines, defined regions — so participants know where to paint. Think of it as a
-            coloring book for collaboration, but one where going outside the lines is part of the beauty.</p>
+            <h3 class="step__title font-display">Design & Concept</h3>
+            <p>Start with a theme, image, or idea. The design determines the outer shape, the internal
+            divisions, and the palette. Consider how the crowd will interact with it — the size of
+            individual shapes, what colors to allow, what constraints to set. A MetaPainting can be
+            a shape, a logo, a theme, an icon, or a message.</p>
             <div class="step__tip">
-              <strong>Tip:</strong> Use vector software (Illustrator, Inkscape) to create your design.
-              This lets you scale to any canvas size and project outlines onto the surface.
+              <strong>Layers and Dials:</strong> Think about the elements of art — color, form, line,
+              shape, space, texture, value — and how to distribute them consciously across layers.
+              Variables like shape size, allowed colors, instruments, time constraints, and prompts
+              are "dials" you can tune for each painting.
             </div>
           </div>
         </div>
@@ -46,14 +75,11 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">02</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">Materials & Setup</h3>
-            <p>You'll need a large canvas or primed surface, acrylic paints in a curated palette,
-            brushes of various sizes, and — the secret ingredient — UV-reactive (phosphorescent) paints
-            for the blacklight layer.</p>
-            <div class="step__tip">
-              <strong>Tip:</strong> Set up a paint station with pre-mixed colors. Limit the palette to
-              prevent muddy results. Label zones on the canvas if helpful.
-            </div>
+            <h3 class="step__title font-display">The Painting (Underpainting)</h3>
+            <p>This is a complete, finished work of art. Not a sketch or an outline — a real painting
+            that could stand on its own. Acrylic on wood is the most common substrate. The underpainting
+            establishes the foundation that the collaborative layer will interact with. This is the
+            artist's vision, rendered in full before anyone else touches it.</p>
           </div>
         </div>
 
@@ -62,10 +88,17 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">03</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">The Base Layer</h3>
-            <p>Before the crowd arrives, establish the foundational elements. Paint the structural
-            outlines, key features, and any elements that need artistic precision. This gives
-            participants a framework to build upon.</p>
+            <h3 class="step__title font-display">The Masking</h3>
+            <p>Once the painting is complete, the entire surface is covered with a masking layer.
+            That layer is then divided into shapes — numbered or lettered — and finely cut so each
+            section can be peeled off individually. This is precise, painstaking work. The mask
+            pattern determines how the crowd will experience the painting: the size and distribution
+            of shapes, whether they follow the image or cut across it, how many participants the
+            painting can accommodate.</p>
+            <div class="step__tip">
+              <strong>SpaceTape</strong> is a key material — it creates clean divisions between
+              sections while protecting the underpainting beneath.
+            </div>
           </div>
         </div>
 
@@ -74,13 +107,16 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">04</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">Facilitating the Crowd</h3>
-            <p>This is where the magic happens. Guide participants to specific areas, suggest colors,
-            and encourage bold strokes. The goal is controlled chaos — enough freedom for individual
-            expression, enough structure for a cohesive result.</p>
+            <h3 class="step__title font-display">The Collaboration</h3>
+            <p>This is where it happens. Participants pick a numbered or lettered spot, peel off the
+            mask for that section, and paint directly onto the surface. They're painting on top of and
+            into the underpainting — their contribution becomes permanently layered with the artist's
+            original work. Think jams and exquisite corpse — controlled chaos within a framework.</p>
             <div class="step__tip">
-              <strong>Tip:</strong> Work in waves. Let 5-10 people paint at once, then rotate.
-              Document every stage with photos — the process is as important as the product.
+              <strong>Crowd flow:</strong> At a festival, expect 10-30 participants per day. At a
+              4-hour event, 5-7 is typical. Manage palettes, wash brushes, explain the constraints,
+              and keep the energy moving. The surrounding art evolves as each person contributes,
+              which changes the experience for the next participant.
             </div>
           </div>
         </div>
@@ -90,10 +126,11 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">05</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">The UV Layer</h3>
-            <p>After the visible painting is complete, add the phosphorescent layer. This can be
-            hidden symbols, glowing patterns, or entirely new imagery that only appears under
-            blacklight. It's the painting's secret soul.</p>
+            <h3 class="step__title font-display">Completion & Refinement</h3>
+            <p>Once all sections are painted, the piece enters a refinement phase. This may include
+            filling gaps, applying a light corrective hand, adding finishing layers, or — in some
+            paintings — applying phosphorescent or UV-reactive paint for a blacklight reveal.
+            Not every painting uses these effects; they're one tool among many.</p>
           </div>
         </div>
 
@@ -102,10 +139,15 @@ import Hero from '../components/Hero.astro';
             <span class="step__number font-display">06</span>
           </div>
           <div class="step__content">
-            <h3 class="step__title font-display">The Reveal</h3>
-            <p>Turn off the lights. Turn on the blacklight. Watch the room react. The hidden layer
-            transforms everything — what was invisible becomes the centerpiece. It's a moment of
-            collective wonder that makes the entire experience unforgettable.</p>
+            <h3 class="step__title font-display">Protect the Painting</h3>
+            <p>The work is a living record of a shared moment. Seal it, document it, and present
+            it. Every MetaPainting carries the story of its creation — the participants, the event,
+            the energy in the room. That story is as much a part of the art as the paint on the surface.</p>
+            <div class="step__tip">
+              <strong>A word on protection:</strong> Always be ready to protect the painting from
+              accidents and bad actors. It has happened. The work of dozens of collaborators
+              deserves to be defended.
+            </div>
           </div>
         </div>
 
@@ -115,7 +157,7 @@ import Hero from '../components/Hero.astro';
       <div class="hiw-cta reveal">
         <h3 class="font-display hiw-cta__title">Ready to Try It Yourself?</h3>
         <p class="hiw-cta__desc">
-          Download vector templates to get started, or commission a guided MetaPainting experience.
+          Download vector templates and masking guides to get started, or commission a guided MetaPainting experience.
         </p>
         <div class="hiw-cta__actions">
           <a href="/templates" class="btn btn--primary">Get Templates</a>
@@ -130,7 +172,7 @@ import Hero from '../components/Hero.astro';
 
 <style>
   .intro {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   .intro__text {
@@ -140,10 +182,48 @@ import Hero from '../components/Hero.astro';
     max-width: 700px;
   }
 
+  .principles {
+    margin-bottom: 3rem;
+  }
+
+  .principles__title {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .principles__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .principle {
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .principle__label {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .principle p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
   .steps {
     display: flex;
     flex-direction: column;
     gap: 3.5rem;
+    padding-top: 2rem;
   }
 
   .step {
@@ -224,6 +304,10 @@ import Hero from '../components/Hero.astro';
     .step {
       grid-template-columns: 40px 1fr;
       gap: 1rem;
+    }
+
+    .principles__grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

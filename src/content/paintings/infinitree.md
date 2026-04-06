@@ -1,27 +1,30 @@
 ---
 title: "InfiniTree"
 tagline: "Roots, Branches, and the Infinite Reflection"
+participants: 42
+medium: "Acrylic on wood"
 featured: true
 sortOrder: 3
-tags: ["nature", "crowd", "blacklight"]
-thumbnail: "/paintings/infinitree/final.jpg"
-thumbnailDark: "/paintings/infinitree/dark.jpg"
+tags: ["nature", "crowd", "phosphorescence"]
+hasBlacklight: true
+thumbnail: "/paintings/infinitree/thumb.jpg"
+thumbnailAlt: "/paintings/infinitree/thumb-alt.jpg"
 phases:
-  - label: "The Seed"
-    description: "The concept began with a single tree — roots reaching down, branches stretching up. A universal symbol rendered on canvas, waiting to grow."
+  - label: "The Painting"
+    description: "A single tree, roots reaching down, branches stretching up — rendered as a complete painting before the collaborative layer began."
     images:
-      - "unpainted.jpg"
-  - label: "The Growth"
-    description: "Collaborators added leaves, creatures, and hidden messages into the bark. The tree became a living ecosystem of contributions."
+      - "02-painting-1.jpg"
+  - label: "The Collaboration"
+    description: "42 collaborators claimed their sections, peeled the masks, and added leaves, creatures, hidden messages, and their own interpretations into the bark and canopy."
     images:
-      - "progress-1.jpg"
-      - "progress-2.jpg"
-  - label: "Full Bloom"
-    description: "The completed work — a forest of collective imagination, every branch carrying someone's mark."
+      - "04-collab-1.jpg"
+      - "04-collab-2.jpg"
+  - label: "Complete"
+    description: "The finished work — a forest of collective imagination, every branch carrying someone's mark, inseparable from the original painting beneath."
     images:
-      - "final.jpg"
+      - "05-complete-1.jpg"
   - label: "Night Mode"
-    description: "The forest comes alive under blacklight. Bioluminescent creatures, glowing roots, and hidden symbols emerge from the darkness."
+    description: "Under blacklight, bioluminescent creatures, glowing roots, and hidden symbols emerge from the darkness."
     images:
-      - "dark.jpg"
+      - "06-effect-1.jpg"
 ---

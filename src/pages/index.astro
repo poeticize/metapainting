@@ -45,13 +45,17 @@ const featured = allPaintings
         <h2 class="section-title">The Art of Elaborate Collaboration</h2>
         <div class="about__body">
           <p class="section-subtitle">
-            Meta-painting is not just about the final image — it is about the story of its creation.
-            Every piece features dozens, sometimes hundreds, of participants. Each brushstroke is a unique
-            contribution, woven into a collective vision.
+            Every MetaPainting begins as a completed work of art. Then it's masked, divided into
+            numbered shapes, and handed to the crowd. Participants peel off a section, paint their
+            contribution onto the surface, and become inseparable from the finished piece. The result
+            is a layered collaboration between artist and community — dozens, sometimes hundreds of
+            people — each one a valid creator in their own right.
           </p>
           <div class="divider"></div>
           <blockquote class="about__quote font-serif">
-            "It might look busy, but that's the point. It is the texture of human connection."
+            "The notion of art conducted by individuals specialized as 'artists' in some ways denies
+            the inherent artistic ability in everyone. This form gives communities artistic voice
+            without the barrier of labels."
           </blockquote>
           <p class="about__credo">Art is in Us All</p>
         </div>
@@ -72,8 +76,8 @@ const featured = allPaintings
           <span class="stat__label">Participants</span>
         </div>
         <div class="stat">
-          <span class="stat__number font-display">2</span>
-          <span class="stat__label">Layers of Light</span>
+          <span class="stat__number font-display">30+</span>
+          <span class="stat__label">Layers Deep</span>
         </div>
         <div class="stat">
           <span class="stat__number font-display">&infin;</span>
@@ -90,7 +94,8 @@ const featured = allPaintings
         <span class="section-label">Featured Works</span>
         <h2 class="section-title">Gallery of Wonders</h2>
         <p class="section-subtitle" style="margin-bottom: 3rem;">
-          Each painting tells a story of collective creation — from blank canvas to shared masterpiece.
+          Each painting is a layered collaboration — a finished work of art, masked, divided, and
+          transformed by the hands of a community.
         </p>
       </div>
 
@@ -101,7 +106,7 @@ const featured = allPaintings
             title={painting.data.title}
             tagline={painting.data.tagline}
             thumbnail={painting.data.thumbnail}
-            thumbnailDark={painting.data.thumbnailDark}
+            thumbnailAlt={painting.data.thumbnailAlt}
             participants={painting.data.participants}
             tags={painting.data.tags}
           />
@@ -127,7 +132,7 @@ const featured = allPaintings
             </svg>
           </div>
           <h3 class="triptych__title font-display">How It Works</h3>
-          <p class="triptych__desc">Learn how to create your own collaborative paintings — from concept to blacklight reveal.</p>
+          <p class="triptych__desc">Learn the full MetaPainting method — from underpainting to masking to crowd collaboration.</p>
         </a>
 
         <a href="/commission" class="triptych__card card">

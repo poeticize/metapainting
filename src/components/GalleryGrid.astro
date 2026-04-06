@@ -7,7 +7,7 @@ interface PaintingData {
     title: string;
     tagline: string;
     thumbnail: string;
-    thumbnailDark?: string;
+    thumbnailAlt?: string;
     participants?: number;
     tags?: string[];
   };
@@ -41,7 +41,7 @@ const allTags = showFilters
       title={painting.data.title}
       tagline={painting.data.tagline}
       thumbnail={painting.data.thumbnail}
-      thumbnailDark={painting.data.thumbnailDark}
+      thumbnailAlt={painting.data.thumbnailAlt}
       participants={painting.data.participants}
       tags={painting.data.tags}
     />

@@ -9,8 +9,10 @@ interface Props {
   participants?: number;
   date?: string;
   venue?: string;
+  medium?: string;
   dimensions?: string;
   thumbnail: string;
+  photoAlbumUrl?: string;
   phases: {
     label: string;
     description: string;
@@ -28,8 +30,10 @@ const {
   participants,
   date,
   venue,
+  medium,
   dimensions,
   thumbnail,
+  photoAlbumUrl,
   phases,
   body,
   prevPainting,
@@ -54,8 +58,14 @@ const {
 
       <div class="painting-hero__meta">
         {participants && <span>{participants} Participants</span>}
+        {medium && <span>{medium}</span>}
         {venue && <span>{venue}</span>}
         {dimensions && <span>{dimensions}</span>}
+        {photoAlbumUrl && (
+          <a href={photoAlbumUrl} target="_blank" rel="noopener noreferrer" class="painting-hero__album-link">
+            View Photo Album &rarr;
+          </a>
+        )}
       </div>
     </div>
   </section>
@@ -155,6 +165,19 @@ const {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-teal);
+  }
+
+  .painting-hero__album-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    transition: color var(--transition-fast);
+  }
+
+  .painting-hero__album-link:hover {
+    color: var(--color-text);
   }
 
   .painting-body {
