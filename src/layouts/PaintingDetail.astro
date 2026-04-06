@@ -1,0 +1,214 @@
+---
+import Base from './Base.astro';
+import PhaseTimeline from '../components/PhaseTimeline.astro';
+
+interface Props {
+  title: string;
+  tagline: string;
+  slug: string;
+  participants?: number;
+  date?: string;
+  venue?: string;
+  dimensions?: string;
+  thumbnail: string;
+  phases: {
+    label: string;
+    description: string;
+    images: string[];
+  }[];
+  body: string;
+  prevPainting?: { slug: string; title: string } | null;
+  nextPainting?: { slug: string; title: string } | null;
+}
+
+const {
+  title,
+  tagline,
+  slug,
+  participants,
+  date,
+  venue,
+  dimensions,
+  thumbnail,
+  phases,
+  body,
+  prevPainting,
+  nextPainting,
+} = Astro.props;
+---
+
+<Base title={`${title} — MetaPainting`} ogImage={thumbnail}>
+
+  <section class="painting-hero" style={`--bg: url('${thumbnail}')`}>
+    <div class="painting-hero__overlay"></div>
+    <div class="painting-hero__content container">
+      <a href="/gallery" class="painting-hero__back btn--ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Gallery
+      </a>
+      <h1 class="painting-hero__title font-display">{title}</h1>
+      <p class="painting-hero__tagline font-serif">{tagline}</p>
+
+      <div class="painting-hero__meta">
+        {participants && <span>{participants} Participants</span>}
+        {venue && <span>{venue}</span>}
+        {dimensions && <span>{dimensions}</span>}
+      </div>
+    </div>
+  </section>
+
+  <section class="painting-body section container">
+    {body && <div class="painting-prose" set:html={body} />}
+    <PhaseTimeline phases={phases} paintingSlug={slug} />
+  </section>
+
+  <nav class="painting-nav container">
+    <div class="painting-nav__inner">
+      {prevPainting ? (
+        <a href={`/paintings/${prevPainting.slug}`} class="painting-nav__link painting-nav__link--prev">
+          <span class="painting-nav__label">Previous</span>
+          <span class="painting-nav__name font-display">{prevPainting.title}</span>
+        </a>
+      ) : <div />}
+      {nextPainting ? (
+        <a href={`/paintings/${nextPainting.slug}`} class="painting-nav__link painting-nav__link--next">
+          <span class="painting-nav__label">Next</span>
+          <span class="painting-nav__name font-display">{nextPainting.title}</span>
+        </a>
+      ) : <div />}
+    </div>
+  </nav>
+
+</Base>
+
+<style>
+  .painting-hero {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    align-items: flex-end;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 4rem;
+  }
+
+  .painting-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 1) 0%,
+      rgba(10, 10, 10, 0.7) 35%,
+      rgba(10, 10, 10, 0.2) 100%
+    );
+  }
+
+  .painting-hero__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .painting-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    transition: color var(--transition-fast);
+  }
+
+  .painting-hero__back:hover {
+    color: var(--color-teal);
+  }
+
+  .painting-hero__title {
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .painting-hero__tagline {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .painting-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .painting-hero__meta span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+
+  .painting-body {
+    max-width: 900px;
+  }
+
+  .painting-prose {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 4rem;
+    max-width: 700px;
+  }
+
+  .painting-nav {
+    padding: 3rem 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: 4rem;
+  }
+
+  .painting-nav__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .painting-nav__link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    transition: color var(--transition-fast);
+  }
+
+  .painting-nav__link--next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .painting-nav__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .painting-nav__name {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+  }
+
+  .painting-nav__link:hover .painting-nav__name {
+    color: var(--color-teal);
+  }
+</style>

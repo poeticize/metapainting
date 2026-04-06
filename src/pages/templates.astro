@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EmailGateForm from '../components/EmailGateForm.astro';
+
+const templates = [
+  {
+    name: 'Starter Template — Abstract Grid',
+    description: 'A simple grid-based layout perfect for first-time collaborative paintings. Defined regions make it easy for participants to find their zone.',
+    preview: '/paintings/coded/unpainted.jpg',
+    file: '/vectors/starter-grid.svg',
+  },
+  {
+    name: 'Tree of Life',
+    description: 'An organic tree design with branches, roots, and canopy regions. Great for nature themes and outdoor events.',
+    preview: '/paintings/infinitree/unpainted.jpg',
+    file: '/vectors/tree-of-life.svg',
+  },
+  {
+    name: 'Geometric Mandala',
+    description: 'A symmetrical mandala with concentric rings and radiating segments. Perfect for meditative, focused painting sessions.',
+    preview: '/paintings/whirled-religion/unpainted.jpg',
+    file: '/vectors/mandala.svg',
+  },
+];
+---
+
+<Base title="Templates — MetaPainting">
+
+  <Hero
+    title="Templates"
+    subtitle="Download vector files to kickstart your own collaborative painting. Enter your email and the template is yours."
+    compact
+    center
+  />
+
+  <section class="section">
+    <div class="container">
+
+      <div class="templates-intro reveal">
+        <p class="font-serif templates-intro__text">
+          These templates are designed to work at any scale — from a small canvas at a classroom event
+          to a massive mural at a festival. They provide structure for collaboration while leaving room
+          for individual expression.
+        </p>
+      </div>
+
+      <div class="templates-grid">
+        {templates.map(template => (
+          <div class="template-card card reveal">
+            <div class="template-card__preview">
+              <img src={template.preview} alt={template.name} loading="lazy" decoding="async" />
+            </div>
+            <div class="template-card__body">
+              <h3 class="template-card__name font-display">{template.name}</h3>
+              <p class="template-card__desc">{template.description}</p>
+              <EmailGateForm templateName={template.name} downloadUrl={template.file} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="templates-note reveal">
+        <p>
+          <strong>Don't see what you need?</strong> I create custom vector designs for commissioned paintings.
+          <a href="/contact" class="link-teal">Get in touch</a> to discuss a bespoke template for your event.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .templates-intro {
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .templates-intro__text {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  .templates-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .template-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    overflow: hidden;
+  }
+
+  .template-card__preview {
+    overflow: hidden;
+  }
+
+  .template-card__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .template-card:hover .template-card__preview img {
+    transform: scale(1.05);
+  }
+
+  .template-card__body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .template-card__name {
+    font-size: 1.6rem;
+    color: var(--color-text);
+    letter-spacing: 0.03em;
+  }
+
+  .template-card__desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .templates-note {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--color-surface-2);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+
+  .templates-note p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .templates-note strong {
+    color: var(--color-text);
+  }
+
+  .link-teal {
+    color: var(--color-teal);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .link-teal:hover {
+    color: var(--color-coral);
+  }
+
+  @media (max-width: 768px) {
+    .template-card {
+      grid-template-columns: 1fr;
+    }
+
+    .template-card__preview {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

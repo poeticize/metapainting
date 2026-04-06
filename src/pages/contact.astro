@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const success = Astro.url.searchParams.get('success') === 'true';
+---
+
+<Base title="Contact — MetaPainting">
+
+  <Hero
+    title="Get in Touch"
+    subtitle="Have a vision? Let's create something extraordinary together."
+    compact
+    center
+  />
+
+  <section class="section">
+    <div class="container container--narrow">
+
+      {success && (
+        <div class="success-message reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <p><strong>Message sent!</strong> I'll get back to you soon.</p>
+        </div>
+      )}
+
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <h2 class="font-display contact-info__title">Let's Talk</h2>
+          <p class="contact-info__desc font-serif">
+            Whether you're interested in commissioning a piece, displaying work at your venue,
+            purchasing a painting, or just want to connect — I'd love to hear from you.
+          </p>
+          <div class="divider"></div>
+          <div class="contact-detail">
+            <h4 class="contact-detail__label font-display">What Happens Next</h4>
+            <ol class="contact-detail__list">
+              <li>I'll review your message and respond within 48 hours</li>
+              <li>We'll discuss your vision, space, and timeline</li>
+              <li>I'll provide a tailored proposal or next steps</li>
+            </ol>
+          </div>
+        </div>
+
+        <ContactForm />
+      </div>
+
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .success-message {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(45, 212, 168, 0.1);
+    border: 1px solid rgba(45, 212, 168, 0.3);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-teal);
+  }
+
+  .success-message p {
+    font-size: 0.95rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info__title {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .contact-info__desc {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .contact-detail__label {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-detail__list {
+    list-style: none;
+    padding: 0;
+    counter-reset: steps;
+  }
+
+  .contact-detail__list li {
+    counter-increment: steps;
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .contact-detail__list li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-teal);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

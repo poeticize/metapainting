@@ -1,0 +1,117 @@
+---
+interface Props {
+  templateName: string;
+  downloadUrl: string;
+}
+
+const { templateName, downloadUrl } = Astro.props;
+---
+
+<div class="email-gate" data-download-url={downloadUrl}>
+  <form
+    class="email-gate__form"
+    name="template-download"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="template-download" />
+    <input type="hidden" name="template" value={templateName} />
+    <p class="hidden" aria-hidden="true">
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+
+    <div class="email-gate__row">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Enter your email to download"
+        class="email-gate__input"
+      />
+      <button type="submit" class="btn btn--primary email-gate__btn">
+        Download
+      </button>
+    </div>
+  </form>
+
+  <div class="email-gate__success" style="display: none;">
+    <p>Thank you! Your download is ready.</p>
+    <a class="btn btn--primary email-gate__download-link" href={downloadUrl} download>
+      Download Now
+    </a>
+  </div>
+</div>
+
+<style>
+  .email-gate__row {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .email-gate__input {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+  }
+
+  .email-gate__input:focus {
+    outline: none;
+    border-color: var(--color-teal);
+  }
+
+  .email-gate__btn {
+    flex-shrink: 0;
+  }
+
+  .email-gate__success {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .email-gate__success p {
+    color: var(--color-teal);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .email-gate__row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.email-gate').forEach(gate => {
+    const form = gate.querySelector('form');
+    const success = gate.querySelector('.email-gate__success') as HTMLElement;
+    if (form && success) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data as any).toString(),
+          });
+          (form as HTMLElement).style.display = 'none';
+          success.style.display = 'block';
+        } catch {
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    }
+  });
+</script>
