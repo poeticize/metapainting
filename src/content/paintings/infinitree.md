@@ -9,6 +9,11 @@ tags: ["nature", "crowd", "phosphorescence"]
 hasBlacklight: true
 thumbnail: "/paintings/infinitree/thumb.jpg"
 thumbnailAlt: "/paintings/infinitree/thumb-alt.jpg"
+layers:
+  underpainting: "/paintings/infinitree/02-painting-1.jpg"
+  underpaintingLabel: "Before"
+  complete: "/paintings/infinitree/05-complete-1.jpg"
+  completeLabel: "After"
 phases:
   - label: "The Painting"
     description: "A single tree, roots reaching down, branches stretching up — rendered as a complete painting before the collaborative layer began."

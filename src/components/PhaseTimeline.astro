@@ -30,15 +30,24 @@ const basePath = `/paintings/${paintingSlug}`;
           { 'timeline__images--duo': phase.images.length === 2 },
           { 'timeline__images--grid': phase.images.length >= 3 },
         ]}>
-          {phase.images.map(img => (
-            <img
-              src={`${basePath}/${img}`}
-              alt={`${phase.label}`}
-              loading="lazy"
-              decoding="async"
-              class="timeline__img"
-            />
-          ))}
+          {phase.images.map(img => {
+            const fullSrc = img.startsWith('/') ? img : `${basePath}/${img}`;
+            return (
+              <div class="timeline__img-wrapper">
+                <img
+                  src={fullSrc}
+                  alt={`${phase.label} - Process photo`}
+                  loading="lazy"
+                  decoding="async"
+                  class="timeline__img"
+                  data-lightbox
+                  data-lightbox-src={fullSrc}
+                  data-lightbox-caption={`${phase.label}: ${phase.description}`}
+                />
+                <span class="timeline__zoom-icon" aria-hidden="true">🔍</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -110,6 +119,13 @@ const basePath = `/paintings/${paintingSlug}`;
     gap: 1rem;
   }
 
+  .timeline__img-wrapper {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
   .timeline__img {
     width: 100%;
     border-radius: var(--radius);
@@ -117,8 +133,25 @@ const basePath = `/paintings/${paintingSlug}`;
     transition: transform var(--transition-base);
   }
 
-  .timeline__img:hover {
-    transform: scale(1.02);
+  .timeline__img-wrapper:hover .timeline__img {
+    transform: scale(1.04);
+  }
+
+  .timeline__zoom-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .timeline__img-wrapper:hover .timeline__zoom-icon {
+    opacity: 1;
   }
 
   @media (max-width: 600px) {

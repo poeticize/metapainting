@@ -36,8 +36,13 @@ const { Content } = await painting.render();
   dimensions={painting.data.dimensions}
   thumbnail={painting.data.thumbnail}
   photoAlbumUrl={painting.data.photoAlbumUrl}
+  hasBlacklight={painting.data.hasBlacklight}
+  reverberationNotes={painting.data.reverberationNotes}
+  collaboratorHighlight={painting.data.collaboratorHighlight}
+  layers={painting.data.layers}
   phases={painting.data.phases}
-  body=""
   prevPainting={prevPainting}
   nextPainting={nextPainting}
-/>
+>
+  <Content />
+</PaintingDetail>

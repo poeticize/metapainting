@@ -1,9 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import PaintingCard from '../components/PaintingCard.astro';
+import LayerSlider from '../components/LayerSlider.astro';
+import LightboxModal from '../components/LightboxModal.astro';
 import { getCollection } from 'astro:content';
 
 const allPaintings = await getCollection('paintings');
+const whirledReligion = allPaintings.find(p => p.slug === 'whirled-religion');
 const featured = allPaintings
   .filter(p => p.data.featured)
   .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
@@ -61,6 +64,27 @@ const featured = allPaintings
         </div>
       </div>
     </div>
+  <!-- INTERACTIVE SHOWCASE -->
+  <section class="section" id="interactive-demo">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Interactive Experience</span>
+        <h2 class="section-title">The Creation Amalgam</h2>
+        <p class="section-subtitle">
+          Slide between the underpainting structure, the crowd mask geometry, the completed collaborative piece, and the UV blacklight reverberation.
+        </p>
+      </div>
+
+      <LayerSlider
+        title="Whirled Religion"
+        underpainting="/paintings/whirled-religion/02-painting-1.jpg"
+        masking="/paintings/whirled-religion/04-collab-1.jpg"
+        maskingLabel="2. Painters Appear"
+        complete="/paintings/whirled-religion/05-complete-1.jpg"
+        completeLabel="3. Done and Done"
+        blacklight="/paintings/whirled-religion/06-effect-1.jpg"
+      />
+    </div>
   </section>
 
   <!-- STATS -->
@@ -72,12 +96,12 @@ const featured = allPaintings
           <span class="stat__label">Paintings Created</span>
         </div>
         <div class="stat">
-          <span class="stat__number font-display">1000+</span>
+          <span class="stat__number font-display">2000+</span>
           <span class="stat__label">Participants</span>
         </div>
         <div class="stat">
-          <span class="stat__number font-display">30+</span>
-          <span class="stat__label">Layers Deep</span>
+          <span class="stat__number font-display">2000+</span>
+          <span class="stat__label">Artists Awakened</span>
         </div>
         <div class="stat">
           <span class="stat__number font-display">&infin;</span>
@@ -115,6 +139,7 @@ const featured = allPaintings
 
       <div class="reveal" style="text-align: center; margin-top: 3rem;">
         <a href="/gallery" class="btn btn--outline">View All Works</a>
+        <div class="coming-soon-banner font-display">MANY MORE COMING SOON!</div>
       </div>
     </div>
   </section>
@@ -172,6 +197,8 @@ const featured = allPaintings
       <a href="/contact" class="btn btn--primary">Get in Touch</a>
     </div>
   </section>
+
+  <LightboxModal />
 
 </Base>
 
@@ -385,6 +412,14 @@ const featured = allPaintings
     .triptych {
       grid-template-columns: 1fr;
     }
+  }
+
+  .coming-soon-banner {
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--color-teal);
+    text-transform: uppercase;
   }
 
   /* CTA */

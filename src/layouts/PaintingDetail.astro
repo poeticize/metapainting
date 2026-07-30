@@ -1,6 +1,8 @@
 ---
 import Base from './Base.astro';
 import PhaseTimeline from '../components/PhaseTimeline.astro';
+import LayerSlider from '../components/LayerSlider.astro';
+import LightboxModal from '../components/LightboxModal.astro';
 
 interface Props {
   title: string;
@@ -13,12 +15,20 @@ interface Props {
   dimensions?: string;
   thumbnail: string;
   photoAlbumUrl?: string;
+  hasBlacklight?: boolean;
+  reverberationNotes?: string;
+  collaboratorHighlight?: string[];
+  layers?: {
+    underpainting?: string;
+    masking?: string;
+    complete?: string;
+    blacklight?: string;
+  };
   phases: {
     label: string;
     description: string;
     images: string[];
   }[];
-  body: string;
   prevPainting?: { slug: string; title: string } | null;
   nextPainting?: { slug: string; title: string } | null;
 }
@@ -34,11 +44,36 @@ const {
   dimensions,
   thumbnail,
   photoAlbumUrl,
-  phases,
-  body,
+  hasBlacklight,
+  reverberationNotes,
+  collaboratorHighlight = [],
+  layers,
+  phases = [],
   prevPainting,
   nextPainting,
 } = Astro.props;
+
+const basePath = `/paintings/${slug}`;
+
+function getLayerSrc(explicitSrc?: string, phaseSnippet?: string) {
+  if (explicitSrc) {
+    return explicitSrc.startsWith('/') ? explicitSrc : `${basePath}/${explicitSrc}`;
+  }
+  if (!phaseSnippet) return undefined;
+  const match = phases.find(p => p.label.toLowerCase().includes(phaseSnippet));
+  if (match && match.images.length > 0) {
+    const img = match.images[0];
+    return img.startsWith('/') ? img : `${basePath}/${img}`;
+  }
+  return undefined;
+}
+
+const resolvedLayers = {
+  underpainting: getLayerSrc(layers?.underpainting, 'painting'),
+  masking: getLayerSrc(layers?.masking, 'mask'),
+  complete: getLayerSrc(layers?.complete, 'complete') || (thumbnail.startsWith('/') ? thumbnail : `${basePath}/${thumbnail}`),
+  blacklight: getLayerSrc(layers?.blacklight, 'effect') || getLayerSrc(layers?.blacklight, 'blacklight'),
+};
 ---
 
 <Base title={`${title} — MetaPainting`} ogImage={thumbnail}>
@@ -57,13 +92,15 @@ const {
       <p class="painting-hero__tagline font-serif">{tagline}</p>
 
       <div class="painting-hero__meta">
-        {participants && <span>{participants} Participants</span>}
-        {medium && <span>{medium}</span>}
-        {venue && <span>{venue}</span>}
-        {dimensions && <span>{dimensions}</span>}
+        {participants && <span class="meta-pill">{participants} Participants</span>}
+        {date && <span class="meta-pill">{date}</span>}
+        {medium && <span class="meta-pill">{medium}</span>}
+        {venue && <span class="meta-pill">{venue}</span>}
+        {dimensions && <span class="meta-pill">{dimensions}</span>}
+        {hasBlacklight && <span class="meta-pill meta-pill--uv">UV Reactive</span>}
         {photoAlbumUrl && (
-          <a href={photoAlbumUrl} target="_blank" rel="noopener noreferrer" class="painting-hero__album-link">
-            View Photo Album &rarr;
+          <a href={photoAlbumUrl} target="_blank" rel="noopener noreferrer" class="painting-hero__album-link btn--outline">
+            Full Google Photos Album &rarr;
           </a>
         )}
       </div>
@@ -71,7 +108,49 @@ const {
   </section>
 
   <section class="painting-body section container">
-    {body && <div class="painting-prose" set:html={body} />}
+    <!-- Interactive Layer Comparison Slider -->
+    <LayerSlider
+      title={title}
+      underpainting={resolvedLayers.underpainting}
+      underpaintingLabel={layers?.underpaintingLabel}
+      masking={resolvedLayers.masking}
+      maskingLabel={layers?.maskingLabel}
+      complete={resolvedLayers.complete}
+      completeLabel={layers?.completeLabel}
+      blacklight={resolvedLayers.blacklight}
+      blacklightLabel={layers?.blacklightLabel}
+    />
+
+    <!-- Narrative & Prose Body -->
+    <div class="painting-prose">
+      <slot />
+    </div>
+
+    <!-- Collaborator & Reverberation Highlights -->
+    {reverberationNotes && (
+      <div class="reverberation-box card">
+        <h4 class="font-display reverberation-title">Residual Reverberation</h4>
+        <p class="font-serif">{reverberationNotes}</p>
+      </div>
+    )}
+
+    {collaboratorHighlight.length > 0 && (
+      <div class="highlights-box card">
+        <h4 class="font-display reverberation-title">Participant & Process Reflections</h4>
+        <ul>
+          {collaboratorHighlight.map(item => (
+            <li class="font-serif">"{item}"</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- Creation Timeline -->
+    <div class="timeline-header">
+      <span class="section-label">Chronological Process</span>
+      <h2 class="font-display section-title">Creation & Event Lifecycle</h2>
+    </div>
+
     <PhaseTimeline phases={phases} paintingSlug={slug} />
   </section>
 
@@ -79,25 +158,28 @@ const {
     <div class="painting-nav__inner">
       {prevPainting ? (
         <a href={`/paintings/${prevPainting.slug}`} class="painting-nav__link painting-nav__link--prev">
-          <span class="painting-nav__label">Previous</span>
+          <span class="painting-nav__label">Previous Painting</span>
           <span class="painting-nav__name font-display">{prevPainting.title}</span>
         </a>
       ) : <div />}
       {nextPainting ? (
         <a href={`/paintings/${nextPainting.slug}`} class="painting-nav__link painting-nav__link--next">
-          <span class="painting-nav__label">Next</span>
+          <span class="painting-nav__label">Next Painting</span>
           <span class="painting-nav__name font-display">{nextPainting.title}</span>
         </a>
       ) : <div />}
     </div>
   </nav>
 
+  <!-- Lightbox Modal Triggered by any process photo -->
+  <LightboxModal />
+
 </Base>
 
 <style>
   .painting-hero {
     position: relative;
-    min-height: 75vh;
+    min-height: 70vh;
     display: flex;
     align-items: flex-end;
     background-image: var(--bg);
@@ -112,8 +194,8 @@ const {
     background: linear-gradient(
       to top,
       rgba(10, 10, 10, 1) 0%,
-      rgba(10, 10, 10, 0.7) 35%,
-      rgba(10, 10, 10, 0.2) 100%
+      rgba(10, 10, 10, 0.75) 40%,
+      rgba(10, 10, 10, 0.25) 100%
     );
   }
 
@@ -140,57 +222,95 @@ const {
   }
 
   .painting-hero__title {
-    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
     letter-spacing: 0.02em;
     color: var(--color-text);
     margin-bottom: 0.5rem;
   }
 
   .painting-hero__tagline {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
     color: var(--color-text-secondary);
     font-style: italic;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
   }
 
   .painting-hero__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1rem;
   }
 
-  .painting-hero__meta span {
+  .meta-pill {
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-teal);
+    background: rgba(45, 212, 168, 0.1);
+    border: 1px solid rgba(45, 212, 168, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+  }
+
+  .meta-pill--uv {
+    color: var(--color-violet);
+    background: rgba(188, 19, 254, 0.1);
+    border-color: rgba(188, 19, 254, 0.3);
   }
 
   .painting-hero__album-link {
+    padding: 0.4rem 1.25rem;
     font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-coral);
-    transition: color var(--transition-fast);
-  }
-
-  .painting-hero__album-link:hover {
-    color: var(--color-text);
   }
 
   .painting-body {
-    max-width: 900px;
+    max-width: 1000px;
   }
 
   .painting-prose {
     font-family: var(--font-serif);
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.15rem;
+    line-height: 1.85;
     color: var(--color-text-secondary);
-    margin-bottom: 4rem;
-    max-width: 700px;
+    margin: 3rem 0;
+    max-width: 800px;
+  }
+
+  .reverberation-box, .highlights-box {
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border-left: 4px solid var(--color-violet);
+    background: var(--color-surface);
+  }
+
+  .highlights-box {
+    border-left-color: var(--color-teal);
+  }
+
+  .reverberation-title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .highlights-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .highlights-box li {
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .timeline-header {
+    margin-top: 5rem;
+    margin-bottom: 2.5rem;
   }
 
   .painting-nav {

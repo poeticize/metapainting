@@ -9,6 +9,13 @@ tags: ["figure", "crowd", "phosphorescence"]
 hasBlacklight: true
 thumbnail: "/paintings/yoga-man/thumb.jpg"
 thumbnailAlt: "/paintings/yoga-man/thumb-alt.jpg"
+layers:
+  underpainting: "/paintings/yoga-man/02-painting-1.jpg"
+  underpaintingLabel: "1. Design Phase"
+  complete: "/paintings/yoga-man/04-collab-2.jpg"
+  completeLabel: "2. Collaborative Ensemble"
+  blacklight: "/paintings/yoga-man/06-effect-1.jpg"
+  blacklightLabel: "3. In the Dark"
 phases:
   - label: "The Painting"
     description: "The figure was rendered in full — a completed underpainting of a yoga pose, holding stillness before the energy of the crowd arrived."
@@ -36,3 +43,5 @@ phases:
       - "06-effect-2.jpg"
       - "06-effect-3.jpg"
 ---
+
+Yoga Man explores balance, breath, and stillness amidst movement. The original figure rendered in calm acrylics becomes a canvas for 60 participants, blending communal expression with internal energy paths glowing under blacklight.
