@@ -1,0 +1,145 @@
+---
+// Lightbox Modal for Process Photos & High-Res View
+---
+
+<div class="lightbox" id="lightbox-modal" aria-hidden="true" role="dialog">
+  <div class="lightbox__overlay" id="lightbox-overlay"></div>
+  
+  <div class="lightbox__content">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close Lightbox">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="lightbox__stage">
+      <img id="lightbox-img" src="" alt="MetaPainting Fullscreen Asset" />
+    </div>
+
+    <div class="lightbox__caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .lightbox__content {
+    position: relative;
+    z-index: 1001;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+    padding: 0.5rem;
+  }
+
+  .lightbox__close:hover {
+    color: var(--color-teal);
+  }
+
+  .lightbox__stage {
+    max-width: 85vw;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+  }
+
+  .lightbox__stage img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+
+  .lightbox__caption {
+    margin-top: 1rem;
+    font-family: var(--font-serif);
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+  }
+</style>
+
+<script>
+  function setupLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-img') as HTMLImageElement;
+    const caption = document.getElementById('lightbox-caption');
+    const overlay = document.getElementById('lightbox-overlay');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    if (!modal || !img) return;
+
+    function openLightbox(src: string, altText?: string) {
+      img.src = src;
+      if (caption) caption.textContent = altText || '';
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      img.src = '';
+    }
+
+    // Attach click listeners to all data-lightbox triggers
+    document.querySelectorAll('[data-lightbox]').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const src = trigger.getAttribute('data-lightbox-src') || trigger.getAttribute('src') || '';
+        const alt = trigger.getAttribute('data-lightbox-caption') || trigger.getAttribute('alt') || '';
+        if (src) openLightbox(src, alt);
+      });
+    });
+
+    overlay?.addEventListener('click', closeLightbox);
+    closeBtn?.addEventListener('click', closeLightbox);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  setupLightbox();
+  document.addEventListener('astro:after-swap', setupLightbox);
+</script>

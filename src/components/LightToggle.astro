@@ -1,0 +1,81 @@
+---
+
+---
+
+<div class="light-toggle" id="light-toggle">
+  <button class="light-toggle__btn active" data-mode="studio">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    Studio Light
+  </button>
+  <button class="light-toggle__btn" data-mode="blacklight">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    Black Light
+  </button>
+</div>
+
+<style>
+  .light-toggle {
+    display: inline-flex;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .light-toggle__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+    padding: 0.5rem 1.1rem;
+    border-radius: 100px;
+    transition: all var(--transition-fast);
+  }
+
+  .light-toggle__btn:hover {
+    color: var(--color-text-secondary);
+  }
+
+  .light-toggle__btn.active {
+    background: var(--color-surface-3);
+    color: var(--color-text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .light-toggle__btn[data-mode="blacklight"].active {
+    background: var(--color-violet);
+    color: white;
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('light-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest('.light-toggle__btn') as HTMLElement | null;
+      if (!btn) return;
+      const mode = btn.dataset.mode;
+      toggle.querySelectorAll('.light-toggle__btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.body.classList.toggle('blacklight', mode === 'blacklight');
+    });
+  }
+</script>

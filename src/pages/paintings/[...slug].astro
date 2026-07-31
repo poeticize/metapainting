@@ -1,0 +1,48 @@
+---
+import PaintingDetail from '../../layouts/PaintingDetail.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const paintings = await getCollection('paintings');
+  const sorted = paintings.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+
+  return sorted.map((painting, i) => {
+    const prev = i > 0 ? sorted[i - 1] : null;
+    const next = i < sorted.length - 1 ? sorted[i + 1] : null;
+
+    return {
+      params: { slug: painting.slug },
+      props: {
+        painting,
+        prevPainting: prev ? { slug: prev.slug, title: prev.data.title } : null,
+        nextPainting: next ? { slug: next.slug, title: next.data.title } : null,
+      },
+    };
+  });
+}
+
+const { painting, prevPainting, nextPainting } = Astro.props;
+const { Content } = await painting.render();
+---
+
+<PaintingDetail
+  title={painting.data.title}
+  tagline={painting.data.tagline}
+  slug={painting.slug}
+  participants={painting.data.participants}
+  date={painting.data.date}
+  venue={painting.data.venue}
+  medium={painting.data.medium}
+  dimensions={painting.data.dimensions}
+  thumbnail={painting.data.thumbnail}
+  photoAlbumUrl={painting.data.photoAlbumUrl}
+  hasBlacklight={painting.data.hasBlacklight}
+  reverberationNotes={painting.data.reverberationNotes}
+  collaboratorHighlight={painting.data.collaboratorHighlight}
+  layers={painting.data.layers}
+  phases={painting.data.phases}
+  prevPainting={prevPainting}
+  nextPainting={nextPainting}
+>
+  <Content />
+</PaintingDetail>

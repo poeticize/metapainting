@@ -1,0 +1,252 @@
+---
+interface Props {
+  title: string;
+  underpainting?: string;
+  underpaintingLabel?: string;
+  masking?: string;
+  maskingLabel?: string;
+  complete?: string;
+  completeLabel?: string;
+  blacklight?: string;
+  blacklightLabel?: string;
+}
+
+const {
+  title,
+  underpainting,
+  underpaintingLabel = '1. Underpainting',
+  masking,
+  maskingLabel = '2. Masking Grid',
+  complete,
+  completeLabel = '3. Collaborative Ensemble',
+  blacklight,
+  blacklightLabel = '4. UV Reverberation',
+} = Astro.props;
+
+const availableLayers = [
+  { id: 'underpainting', label: underpaintingLabel, src: underpainting, desc: 'Original background composition before masking' },
+  { id: 'masking', label: maskingLabel, src: masking, desc: 'Taped geometry & numbered crowd sections' },
+  { id: 'complete', label: completeLabel, src: complete, desc: 'Combined expression of crowd & artist' },
+  { id: 'blacklight', label: blacklightLabel, src: blacklight, desc: 'Phosphorescent reverberation under blacklight' },
+].filter(layer => Boolean(layer.src));
+---
+
+<div class="layer-slider card">
+  <div class="layer-slider__header">
+    <div class="layer-slider__meta">
+      <span class="section-label">Interactive Amalgam Viewer</span>
+      <h3 class="font-display layer-slider__title">Creation Layers & Reverberation</h3>
+    </div>
+    
+    <div class="layer-slider__nav" role="tablist">
+      {availableLayers.map((layer, index) => (
+        <button
+          type="button"
+          class={`layer-tab ${index === 0 ? 'active' : ''}`}
+          data-layer={layer.id}
+          data-src={layer.src}
+          data-desc={layer.desc}
+          role="tab"
+          aria-selected={index === 0 ? "true" : "false"}
+        >
+          {layer.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="layer-slider__stage">
+    <div class="layer-slider__viewport">
+      {availableLayers.map((layer, index) => (
+        <img
+          src={layer.src}
+          alt={`${title} - ${layer.label}`}
+          class={`layer-slider__img ${index === 0 ? 'active' : ''}`}
+          data-layer-id={layer.id}
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+      ))}
+      <div class="layer-slider__overlay-badge font-display layer-badge">
+        {availableLayers[0]?.label || 'Layer'}
+      </div>
+    </div>
+    <div class="layer-slider__caption layer-caption">
+      <p>{availableLayers[0]?.desc}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .layer-slider {
+    margin: 3rem 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .layer-slider__header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .layer-slider__title {
+    font-size: 1.8rem;
+    color: var(--color-text);
+  }
+
+  .layer-slider__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: var(--color-surface-2);
+    padding: 0.35rem;
+    border-radius: 30px;
+    border: 1px solid var(--color-border);
+  }
+
+  .layer-tab {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .layer-tab:hover {
+    color: var(--color-text);
+  }
+
+  .layer-tab.active {
+    background: var(--color-teal);
+    color: var(--color-bg);
+    box-shadow: 0 4px 15px rgba(45, 212, 168, 0.3);
+  }
+
+  .layer-tab[data-layer="blacklight"].active {
+    background: var(--color-violet);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(188, 19, 254, 0.4);
+  }
+
+  .layer-slider__stage {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--color-bg);
+  }
+
+  .layer-slider__viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 650px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-surface-3);
+  }
+
+  .layer-slider__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    pointer-events: none;
+  }
+
+  .layer-slider__img.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .layer-slider__overlay-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border-hover);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--color-teal);
+    letter-spacing: 0.08em;
+  }
+
+  .layer-slider__caption {
+    padding-top: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .layer-slider__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .layer-slider__nav {
+      width: 100%;
+      overflow-x: auto;
+      justify-content: flex-start;
+    }
+
+    .layer-slider__viewport {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>
+
+<script>
+  function setupLayerSliders() {
+    const containers = document.querySelectorAll('.layer-slider');
+    containers.forEach(container => {
+      const tabs = container.querySelectorAll('.layer-tab');
+      const images = container.querySelectorAll('.layer-slider__img');
+      const badge = container.querySelector('.layer-badge');
+      const caption = container.querySelector('.layer-caption p');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetLayer = tab.getAttribute('data-layer');
+          const desc = tab.getAttribute('data-desc');
+          const labelText = tab.textContent?.trim();
+
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          images.forEach(img => {
+            if (img.getAttribute('data-layer-id') === targetLayer) {
+              img.classList.add('active');
+            } else {
+              img.classList.remove('active');
+            }
+          });
+
+          if (badge && labelText) badge.textContent = labelText;
+          if (caption && desc) caption.textContent = desc;
+        });
+      });
+    });
+  }
+
+  setupLayerSliders();
+  document.addEventListener('astro:after-swap', setupLayerSliders);
+  document.addEventListener('DOMContentLoaded', setupLayerSliders);
+</script>

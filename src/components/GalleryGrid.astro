@@ -1,0 +1,117 @@
+---
+import PaintingCard from './PaintingCard.astro';
+
+interface PaintingData {
+  slug: string;
+  data: {
+    title: string;
+    tagline: string;
+    thumbnail: string;
+    thumbnailAlt?: string;
+    participants?: number;
+    tags?: string[];
+  };
+}
+
+interface Props {
+  paintings: PaintingData[];
+  showFilters?: boolean;
+}
+
+const { paintings, showFilters = false } = Astro.props;
+
+const allTags = showFilters
+  ? [...new Set(paintings.flatMap(p => p.data.tags || []))].sort()
+  : [];
+---
+
+{showFilters && allTags.length > 0 && (
+  <div class="gallery-filters" id="gallery-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    {allTags.map(tag => (
+      <button class="filter-btn" data-filter={tag}>{tag}</button>
+    ))}
+  </div>
+)}
+
+<div class="gallery-grid stagger" id="gallery-grid">
+  {paintings.map(painting => (
+    <PaintingCard
+      slug={painting.slug}
+      title={painting.data.title}
+      tagline={painting.data.tagline}
+      thumbnail={painting.data.thumbnail}
+      thumbnailAlt={painting.data.thumbnailAlt}
+      participants={painting.data.participants}
+      tags={painting.data.tags}
+    />
+  ))}
+</div>
+
+<style>
+  .gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-btn {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding: 0.5rem 1.1rem;
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    color: var(--color-text);
+    border-color: var(--color-teal);
+    background: rgba(45, 212, 168, 0.08);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{showFilters && (
+  <script>
+    const filters = document.getElementById('gallery-filters');
+    const grid = document.getElementById('gallery-grid');
+    if (filters && grid) {
+      filters.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.filter-btn') as HTMLElement | null;
+        if (!btn) return;
+        const filter = btn.dataset.filter;
+        filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        grid.querySelectorAll('.gallery-card').forEach(card => {
+          const el = card as HTMLElement;
+          if (filter === 'all') {
+            el.style.display = '';
+          } else {
+            const tags = el.dataset.tags?.split(',') || [];
+            el.style.display = tags.includes(filter!) ? '' : 'none';
+          }
+        });
+      });
+    }
+  </script>
+)}

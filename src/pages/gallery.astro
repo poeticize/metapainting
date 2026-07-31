@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import LightToggle from '../components/LightToggle.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import { getCollection } from 'astro:content';
+
+const allPaintings = await getCollection('paintings');
+const sorted = allPaintings.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+---
+
+<Base title="Gallery — MetaPainting">
+
+  <Hero
+    title="Gallery"
+    subtitle="Every painting tells a story of collective creation. Toggle between studio light and blacklight to see the hidden layers."
+    compact
+    center
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="gallery-controls reveal">
+        <LightToggle />
+      </div>
+
+      <GalleryGrid paintings={sorted} showFilters={false} />
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+</style>

@@ -1,0 +1,168 @@
+---
+interface Phase {
+  label: string;
+  description: string;
+  images: string[];
+}
+
+interface Props {
+  phases: Phase[];
+  paintingSlug: string;
+}
+
+const { phases, paintingSlug } = Astro.props;
+const basePath = `/paintings/${paintingSlug}`;
+---
+
+<div class="timeline">
+  {phases.map((phase, i) => (
+    <section class="timeline__phase reveal">
+      <div class="timeline__marker">
+        <span class="timeline__number font-display">{String(i + 1).padStart(2, '0')}</span>
+        <div class="timeline__line"></div>
+      </div>
+      <div class="timeline__content">
+        <h3 class="timeline__label font-display">{phase.label}</h3>
+        <p class="timeline__desc">{phase.description}</p>
+        <div class:list={[
+          'timeline__images',
+          { 'timeline__images--single': phase.images.length === 1 },
+          { 'timeline__images--duo': phase.images.length === 2 },
+          { 'timeline__images--grid': phase.images.length >= 3 },
+        ]}>
+          {phase.images.map(img => {
+            const fullSrc = img.startsWith('/') ? img : `${basePath}/${img}`;
+            return (
+              <div class="timeline__img-wrapper">
+                <img
+                  src={fullSrc}
+                  alt={`${phase.label} - Process photo`}
+                  loading="lazy"
+                  decoding="async"
+                  class="timeline__img"
+                  data-lightbox
+                  data-lightbox-src={fullSrc}
+                  data-lightbox-caption={`${phase.label}: ${phase.description}`}
+                />
+                <span class="timeline__zoom-icon" aria-hidden="true">🔍</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .timeline__phase {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 2rem;
+  }
+
+  .timeline__marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .timeline__number {
+    font-size: 1.4rem;
+    color: var(--color-teal);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline__line {
+    flex: 1;
+    width: 1px;
+    background: var(--color-border);
+    min-height: 40px;
+  }
+
+  .timeline__label {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+
+  .timeline__desc {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    max-width: 650px;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .timeline__images--single {
+    max-width: 800px;
+  }
+
+  .timeline__images--duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .timeline__images--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .timeline__img-wrapper {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+
+  .timeline__img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition-base);
+  }
+
+  .timeline__img-wrapper:hover .timeline__img {
+    transform: scale(1.04);
+  }
+
+  .timeline__zoom-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .timeline__img-wrapper:hover .timeline__zoom-icon {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .timeline__phase {
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+    }
+
+    .timeline__images--duo,
+    .timeline__images--grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
