@@ -9,7 +9,7 @@ const allPaintings = await getCollection('paintings');
 const sorted = allPaintings.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 ---
 
-<Base title="Gallery — MetaPainting">
+<Base title="Gallery — Metapainting">
 
   <Hero
     title="Gallery"
@@ -25,6 +25,80 @@ const sorted = allPaintings.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
       </div>
 
       <GalleryGrid paintings={sorted} showFilters={false} />
+
+      <div class="divider" style="margin: 5rem 0 4rem;"></div>
+
+      <!-- EXHIBITIONS, INSTALLATIONS & PUBLIC FEATURES -->
+      <div class="exhibitions-section reveal">
+        <span class="section-label font-hand">Beyond the Canvas</span>
+        <h2 class="section-title">Exhibitions, Installations & Public Displays</h2>
+        <p class="section-subtitle" style="margin-bottom: 3rem;">
+          Explore full gallery shows, stage decorations, festival activations, and public art features.
+        </p>
+
+        <div class="exhibitions-grid grid-3 stagger">
+          
+          <!-- SOLO GALLERY SHOW & ORIGINALS -->
+          <div class="exhibition-card card">
+            <div class="exhibition-card__badge font-hand">Solo Exhibition</div>
+            <h3 class="exhibition-card__title font-display">Gallery Show & Unmasked Originals</h3>
+            <p class="exhibition-card__desc font-serif">
+              Full gallery exhibition showcase featuring unmasked foundational paintings, early experiments, and the genesis of the Metapainting technique.
+            </p>
+            <a
+              href="https://photos.app.goo.gl/317HsySBDr2qkFas6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--outline exhibition-card__btn"
+            >
+              View Full Gallery Show Album &rarr;
+            </a>
+          </div>
+
+          <!-- STAGE DECORATION & FESTIVAL ART -->
+          <div class="exhibition-card card">
+            <div class="exhibition-card__badge font-hand">Festival & Stage</div>
+            <h3 class="exhibition-card__title font-display">Stage Decoration & Live Art</h3>
+            <p class="exhibition-card__desc font-serif">
+              Large-scale immersive stage environments, live festival painting activations, and event architectural design.
+            </p>
+            <a
+              href="https://photos.app.goo.gl/JWyLSiJdaT84ELDD6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--outline exhibition-card__btn"
+            >
+              View Stage Art Album &rarr;
+            </a>
+          </div>
+
+          <!-- PUBLIC FEATURES & INSTALLATIONS -->
+          <div class="exhibition-card card">
+            <div class="exhibition-card__badge font-hand">Public Feature</div>
+            <h3 class="exhibition-card__title font-display">Public Features & Current Displays</h3>
+            <p class="exhibition-card__desc font-serif">
+              Featured artwork across public media and venues:
+            </p>
+            <ul class="public-features-list font-serif">
+              <li>📍 <strong>Meander Art Bar (Baltimore, MD)</strong> — <em>Coded</em> on display</li>
+              <li>🌆 <strong>Baltimore LED Billboard</strong> — Featured digital exhibit</li>
+              <li>🔥 <strong>Burning Man</strong> — Desert art activations</li>
+              <li>🖼️ <strong>Starving Artists Wall</strong> — Local venue feature</li>
+            </ul>
+            <a
+              href="https://photos.app.goo.gl/wimYR6WhTyLny6kp7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--outline exhibition-card__btn"
+              style="margin-top: 1rem;"
+            >
+              View Public Features Album &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -38,5 +112,58 @@ const sorted = allPaintings.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 2.5rem;
+  }
+
+  .exhibitions-section {
+    margin-top: 2rem;
+  }
+
+  .exhibition-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .exhibition-card__badge {
+    font-size: 1.2rem;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+  }
+
+  .exhibition-card__title {
+    font-size: 1.6rem;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .exhibition-card__desc {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .public-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .public-features-list strong {
+    color: var(--color-text);
+  }
+
+  .exhibition-card__btn {
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
   }
 </style>

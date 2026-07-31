@@ -1,24 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
-<Base title="Commission — MetaPainting">
+<Base title="Commission — Metapainting">
 
   <Hero
-    title="Commission a MetaPainting"
+    title="Commission a Metapainting"
     subtitle="Bring the power of collaborative art to your event, venue, or organization."
-    backgroundImage="/paintings/whirled-religion/progress-2.jpg"
+    backgroundImage="/paintings/love-and-burning/FB_20230204.jpg"
   />
 
   <section class="section">
     <div class="container container--narrow">
 
       <div class="reveal">
-        <span class="section-label">Why MetaPainting</span>
+        <span class="section-label font-hand">Why Metapainting</span>
         <h2 class="section-title">Art That Brings People Together</h2>
         <p class="commission-intro font-serif">
-          A MetaPainting isn't just a painting — it's a layered experience. It begins with a
+          A Metapainting isn't just a painting — it's a layered experience. It begins with a
           completed work of art, which is then masked and divided into numbered sections for your
           participants to claim, peel, and paint. The result is a permanent record of a shared
           moment — artist and community fused on one surface, every participant a valid creator,
@@ -38,77 +39,67 @@ import Hero from '../components/Hero.astro';
           </div>
           <div class="use-case">
             <h4 class="use-case__name font-display">Festivals & Fairs</h4>
-            <p>A participatory installation that draws crowds and creates lasting memories — and a tangible artifact.</p>
+            <p>Interactive art activation that engages thousands of attendees over the course of an event.</p>
           </div>
           <div class="use-case">
-            <h4 class="use-case__name font-display">Galleries & Museums</h4>
-            <p>Interactive art that challenges the boundary between artist and audience. Display the process and the result.</p>
+            <h4 class="use-case__name font-display">Community & Nonprofits</h4>
+            <p>A physical monument to a community's shared vision, values, or milestone.</p>
           </div>
           <div class="use-case">
-            <h4 class="use-case__name font-display">Fundraisers & Galas</h4>
-            <p>The finished painting becomes a one-of-a-kind auction piece — created by the very people in the room.</p>
-          </div>
-          <div class="use-case">
-            <h4 class="use-case__name font-display">Schools & Universities</h4>
-            <p>Teach collaboration, creativity, and community through hands-on artistic expression.</p>
-          </div>
-          <div class="use-case">
-            <h4 class="use-case__name font-display">Private Commissions</h4>
-            <p>A bespoke piece for your home, office, or collection — with a story only your gathering could tell.</p>
+            <h4 class="use-case__name font-display">Private Celebrations</h4>
+            <p>Weddings, anniversaries, or family reunions — create an heirloom painted by everyone who attended.</p>
           </div>
         </div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- WHAT YOU GET -->
-      <div class="what-you-get reveal">
-        <h3 class="font-display what-you-get__title">What's Included</h3>
-        <ul class="what-you-get__list">
-          <li>
-            <strong>Custom underpainting</strong> — A complete original painting tailored to your theme, created by the artist before your event
-          </li>
-          <li>
-            <strong>Masking & preparation</strong> — The painting is masked, divided into numbered sections, and finely cut for participant interaction
-          </li>
-          <li>
-            <strong>All materials</strong> — Professional-grade wood substrates, acrylic paints, brushes, palettes, and cleanup supplies
-          </li>
-          <li>
-            <strong>Facilitation</strong> — On-site guidance to manage crowd flow, explain constraints, and keep the energy moving
-          </li>
-          <li>
-            <strong>Optional effects</strong> — Phosphorescent or UV-reactive paint layers for a blacklight reveal, if desired
-          </li>
-          <li>
-            <strong>The finished painting</strong> — Yours to keep, display, or auction — a one-of-a-kind collaborative work
-          </li>
-          <li>
-            <strong>Documentation</strong> — Progress photos capturing every phase, from underpainting to crowd collaboration to finished piece
-          </li>
-        </ul>
+      <!-- WHAT'S INCLUDED -->
+      <div class="included reveal">
+        <h3 class="font-display included__title">What's Included</h3>
+        <div class="included__list">
+          <div class="included__item">
+            <span class="included__check font-display">&check;</span>
+            <div>
+              <strong>Original Artwork & Design</strong>
+              <p>Custom underpainting and vector masking cutlines tailored to your event's theme or venue.</p>
+            </div>
+          </div>
+          <div class="included__item">
+            <span class="included__check font-display">&check;</span>
+            <div>
+              <strong>On-Site Facilitation</strong>
+              <p>Guiding participants through the process, managing paints, and ensuring seamless execution.</p>
+            </div>
+          </div>
+          <div class="included__item">
+            <span class="included__check font-display">&check;</span>
+            <div>
+              <strong>All Materials Provided</strong>
+              <p>Paints, brushes, aprons, masking materials, UV lights, and display hardware included.</p>
+            </div>
+          </div>
+          <div class="included__item">
+            <span class="included__check font-display">&check;</span>
+            <div>
+              <strong>Final Finishing & Sealing</strong>
+              <p>Professional clear-coat protection, UV varnish, and mounting hardware for permanent display.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- PROCEEDS -->
-      <div class="proceeds reveal">
-        <h3 class="font-display proceeds__title">Where the Money Goes</h3>
-        <p class="font-serif proceeds__desc">
-          All proceeds from commissions and sales go directly toward creating more collaborative art,
-          developing new techniques, and expanding the MetaPainting project. Every painting
-          funds the next gathering, the next blank canvas, the next community brought together
-          through shared creation.
+      <!-- CONTACT / COMMISSION FORM -->
+      <div class="commission-form-section reveal" id="form">
+        <span class="section-label font-hand">Start the Conversation</span>
+        <h2 class="section-title">Request a Commission</h2>
+        <p class="font-serif form-subtitle">
+          Tell me about your event or vision and we'll craft a custom Metapainting experience for you.
         </p>
-      </div>
 
-      <!-- CTA -->
-      <div class="commission-cta reveal">
-        <h3 class="font-display commission-cta__title">Let's Make Something Together</h3>
-        <p class="commission-cta__desc">
-          Every project is different. Tell me about your vision and I'll put together a tailored proposal.
-        </p>
-        <a href="/contact" class="btn btn--primary">Start a Conversation</a>
+        <ContactForm formName="commission" />
       </div>
 
     </div>
@@ -118,126 +109,74 @@ import Hero from '../components/Hero.astro';
 
 <style>
   .commission-intro {
-    font-size: 1.15rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 700px;
-  }
-
-  .use-cases {
-    padding: 2rem 0;
-  }
-
-  .use-cases__title {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+    line-height: 1.7;
     color: var(--color-text);
-    margin-bottom: 2rem;
-    letter-spacing: 0.03em;
+  }
+
+  .use-cases__title,
+  .included__title {
+    font-size: 1.8rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
   }
 
   .use-cases__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .use-case {
-    padding: 1.5rem;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
+    padding: 1.5rem;
     border-radius: var(--radius);
-    transition: border-color var(--transition-fast);
-  }
-
-  .use-case:hover {
-    border-color: var(--color-border-hover);
   }
 
   .use-case__name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--color-teal);
     margin-bottom: 0.5rem;
-    letter-spacing: 0.03em;
   }
 
   .use-case p {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
-
-  .what-you-get {
-    padding: 2rem 0;
-  }
-
-  .what-you-get__title {
-    font-size: 2rem;
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.03em;
-  }
-
-  .what-you-get__list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .what-you-get__list li {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
-    padding-left: 1.5rem;
-    position: relative;
-    line-height: 1.6;
   }
 
-  .what-you-get__list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
+  .included__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .included__item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .included__check {
+    font-size: 1.4rem;
     color: var(--color-teal);
-    font-weight: 700;
+    line-height: 1;
+    margin-top: 0.1rem;
   }
 
-  .what-you-get__list li strong {
+  .included__item strong {
     color: var(--color-text);
-  }
-
-  .proceeds {
-    padding: 2rem 0;
-  }
-
-  .proceeds__title {
-    font-size: 2rem;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-    letter-spacing: 0.03em;
-  }
-
-  .proceeds__desc {
     font-size: 1.05rem;
+  }
+
+  .included__item p {
+    font-size: 0.95rem;
     color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 700px;
+    margin-top: 0.2rem;
   }
 
-  .commission-cta {
-    text-align: center;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid var(--color-border);
-    margin-top: 3rem;
-  }
-
-  .commission-cta__title {
-    font-size: 2.5rem;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-  }
-
-  .commission-cta__desc {
-    font-size: 1rem;
+  .form-subtitle {
+    font-size: 1.1rem;
     color: var(--color-text-secondary);
     margin-bottom: 2rem;
   }

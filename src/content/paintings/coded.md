@@ -7,8 +7,12 @@ featured: true
 sortOrder: 2
 tags: ["science", "crowd", "phosphorescence"]
 hasBlacklight: true
-thumbnail: "/paintings/coded/thumb.jpg"
-thumbnailAlt: "/paintings/coded/thumb-alt.jpg"
+thumbnail: "/paintings/coded/05-complete-1.jpg"
+thumbnailAlt: "/paintings/coded/06-effect-1.jpg"
+layers:
+  underpainting: "/paintings/coded/02-painting-1.jpg"
+  complete: "/paintings/coded/05-complete-1.jpg"
+  blacklight: "/paintings/coded/06-effect-1.jpg"
 phases:
   - label: "The Painting"
     description: "The double helix structure was painted in full — a completed underpainting establishing the architecture of DNA before the masking and collaboration began."

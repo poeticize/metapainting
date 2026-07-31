@@ -3,20 +3,22 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 ---
 
-<Base title="How It Works — MetaPainting">
+<Base title="How It Works — Metapainting">
 
   <Hero
     title="How It Works"
-    subtitle="The MetaPainting method — from completed painting to masked surface to crowd collaboration."
-    backgroundImage="/paintings/yoga-man/progress-3.jpg"
+    subtitle="The Metapainting method — from completed painting to masked surface to crowd collaboration."
+    backgroundImage="/paintings/love-and-burning/PXL_20230218_1.jpg"
+    backgroundPosition="center 30%"
   />
 
   <section class="section">
     <div class="container container--narrow">
 
       <div class="intro reveal">
+        <span class="section-label">The Philosophy</span>
         <p class="font-serif intro__text">
-          MetaPainting is both a technique and a philosophy. Every piece begins as a finished painting
+          Metapainting is both a technique and a philosophy. Every piece begins as a finished painting
           by the artist. That painting is then masked, divided into numbered shapes, and opened to the
           crowd. Participants peel off a section, paint their contribution, and become inseparable from
           the work. The result is a layered collaboration — artist and community, structure and freedom,
@@ -48,120 +50,72 @@ import Hero from '../components/Hero.astro';
 
       <div class="divider"></div>
 
-      <!-- STEPS -->
-      <div class="steps">
+      <!-- THE 4 PHASES -->
+      <div class="phases-overview reveal">
+        <span class="section-label font-hand">Step by Step</span>
+        <h2 class="section-title">The Four Phases</h2>
 
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">01</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">Design & Concept</h3>
-            <p>Start with a theme, image, or idea. The design determines the outer shape, the internal
-            divisions, and the palette. Consider how the crowd will interact with it — the size of
-            individual shapes, what colors to allow, what constraints to set. A MetaPainting can be
-            a shape, a logo, a theme, an icon, or a message.</p>
-            <div class="step__tip">
-              <strong>Layers and Dials:</strong> Think about the elements of art — color, form, line,
-              shape, space, texture, value — and how to distribute them consciously across layers.
-              Variables like shape size, allowed colors, instruments, time constraints, and prompts
-              are "dials" you can tune for each painting.
-            </div>
+        <div class="phase-card card">
+          <div class="phase-card__num font-display">01</div>
+          <div class="phase-card__content">
+            <h3 class="font-display">The Underpainting</h3>
+            <p class="font-serif">
+              The artist creates a complete, standalone painting on wood or canvas. This forms the
+              hidden bottom layer — the structural foundation that will bleed through, underlay, or
+              frame the finished collaborative work.
+            </p>
           </div>
         </div>
 
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">02</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">The Painting (Underpainting)</h3>
-            <p>This is a complete, finished work of art. Not a sketch or an outline — a real painting
-            that could stand on its own. Acrylic on wood is the most common substrate. The underpainting
-            establishes the foundation that the collaborative layer will interact with. This is the
-            artist's vision, rendered in full before anyone else touches it.</p>
-          </div>
-        </div>
-
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">03</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">The Masking</h3>
-            <p>Once the painting is complete, the entire surface is covered with a masking layer.
-            That layer is then divided into shapes — numbered or lettered — and finely cut so each
-            section can be peeled off individually. This is precise, painstaking work. The mask
-            pattern determines how the crowd will experience the painting: the size and distribution
-            of shapes, whether they follow the image or cut across it, how many participants the
-            painting can accommodate.</p>
-            <div class="step__tip">
-              <strong>SpaceTape</strong> is a key material — it creates clean divisions between
-              sections while protecting the underpainting beneath.
-            </div>
+        <div class="phase-card card">
+          <div class="phase-card__num font-display">02</div>
+          <div class="phase-card__content">
+            <h3 class="font-display">Precision Masking</h3>
+            <p class="font-serif">
+              The painting is covered with custom masking tape or laser-cut stencil cutlines.
+              The design breaks the surface into numbered polygonal shapes, establishing clear boundaries
+              between participant zones.
+            </p>
           </div>
         </div>
 
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">04</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">The Collaboration</h3>
-            <p>This is where it happens. Participants pick a numbered or lettered spot, peel off the
-            mask for that section, and paint directly onto the surface. They're painting on top of and
-            into the underpainting — their contribution becomes permanently layered with the artist's
-            original work. Think jams and exquisite corpse — controlled chaos within a framework.</p>
-            <div class="step__tip">
-              <strong>Crowd flow:</strong> At a festival, expect 10-30 participants per day. At a
-              4-hour event, 5-7 is typical. Manage palettes, wash brushes, explain the constraints,
-              and keep the energy moving. The surrounding art evolves as each person contributes,
-              which changes the experience for the next participant.
-            </div>
+        <div class="phase-card card">
+          <div class="phase-card__num font-display">03</div>
+          <div class="phase-card__content">
+            <h3 class="font-display">Crowd Collaboration</h3>
+            <p class="font-serif">
+              The painting goes public. Dozens or hundreds of participants each pick one numbered section,
+              peel off the masking tape, and paint inside their assigned region. Each person brings their
+              own style, color choices, and energy.
+            </p>
           </div>
         </div>
 
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">05</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">Completion & Refinement</h3>
-            <p>Once all sections are painted, the piece enters a refinement phase. This may include
-            filling gaps, applying a light corrective hand, adding finishing layers, or — in some
-            paintings — applying phosphorescent or UV-reactive paint for a blacklight reveal.
-            Not every painting uses these effects; they're one tool among many.</p>
-          </div>
-        </div>
-
-        <div class="step reveal">
-          <div class="step__marker">
-            <span class="step__number font-display">06</span>
-          </div>
-          <div class="step__content">
-            <h3 class="step__title font-display">Protect the Painting</h3>
-            <p>The work is a living record of a shared moment. Seal it, document it, and present
-            it. Every MetaPainting carries the story of its creation — the participants, the event,
-            the energy in the room. That story is as much a part of the art as the paint on the surface.</p>
-            <div class="step__tip">
-              <strong>A word on protection:</strong> Always be ready to protect the painting from
-              accidents and bad actors. It has happened. The work of dozens of collaborators
-              deserves to be defended.
-            </div>
+        <div class="phase-card card">
+          <div class="phase-card__num font-display">04</div>
+          <div class="phase-card__content">
+            <h3 class="font-display">Unveiling & Residual Reverberation</h3>
+            <p class="font-serif">
+              All remaining tape is removed. The sharp, masked lines separate the individual contributions,
+              creating a startling synthesis of individual freedom and overall structure. Under blacklight,
+              phosphorescent pigments expose an entirely hidden UV dimension.
+            </p>
           </div>
         </div>
 
       </div>
 
+      <div class="divider"></div>
+
       <!-- CTA -->
-      <div class="hiw-cta reveal">
-        <h3 class="font-display hiw-cta__title">Ready to Try It Yourself?</h3>
-        <p class="hiw-cta__desc">
-          Download vector templates and masking guides to get started, or commission a guided MetaPainting experience.
+      <div class="cta-box card reveal">
+        <h3 class="font-display">Ready to Create?</h3>
+        <p class="font-serif">
+          Download vector templates and masking guides to get started, or commission a guided Metapainting experience.
         </p>
-        <div class="hiw-cta__actions">
+        <div class="cta-box__actions">
           <a href="/templates" class="btn btn--primary">Get Templates</a>
-          <a href="/commission" class="btn btn--outline">Commission a Painting</a>
+          <a href="/commission" class="btn btn--outline">Commission an Event</a>
         </div>
       </div>
 
@@ -172,25 +126,25 @@ import Hero from '../components/Hero.astro';
 
 <style>
   .intro {
-    margin-bottom: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
   }
 
   .intro__text {
-    font-size: 1.15rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 700px;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    line-height: 1.7;
+    color: var(--color-text);
   }
 
   .principles {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
 
   .principles__title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--color-text);
     margin-bottom: 1.5rem;
-    letter-spacing: 0.03em;
+    text-align: center;
   }
 
   .principles__grid {
@@ -200,8 +154,9 @@ import Hero from '../components/Hero.astro';
   }
 
   .principle {
-    padding: 1.25rem;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
+    padding: 1.5rem;
     border-radius: var(--radius);
   }
 
@@ -210,90 +165,66 @@ import Hero from '../components/Hero.astro';
     font-size: 1.1rem;
     color: var(--color-teal);
     margin-bottom: 0.5rem;
-    letter-spacing: 0.03em;
   }
 
   .principle p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-text-secondary);
-    line-height: 1.6;
   }
 
-  .steps {
+  .phases-overview {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
-    padding-top: 2rem;
-  }
-
-  .step {
-    display: grid;
-    grid-template-columns: 60px 1fr;
     gap: 2rem;
   }
 
-  .step__marker {
+  .phase-card {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
   }
 
-  .step__number {
-    font-size: 1.4rem;
+  .phase-card__num {
+    font-size: 3rem;
     color: var(--color-teal);
-    letter-spacing: 0.05em;
+    line-height: 1;
+    opacity: 0.8;
   }
 
-  .step__title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  .phase-card__content h3 {
+    font-size: 1.5rem;
     color: var(--color-text);
-    margin-bottom: 1rem;
-    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
   }
 
-  .step__content p {
-    font-size: 1rem;
+  .phase-card__content p {
+    font-size: 1.05rem;
     color: var(--color-text-secondary);
-    line-height: 1.75;
-    max-width: 650px;
+
   }
 
-  .step__tip {
-    margin-top: 1rem;
-    padding: 1rem 1.25rem;
-    background: var(--color-surface-2);
-    border-left: 3px solid var(--color-teal);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
-
-  .step__tip strong {
-    color: var(--color-teal);
-  }
-
-  .hiw-cta {
+  .cta-box {
+    padding: 3rem 2rem;
     text-align: center;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid var(--color-border);
-    margin-top: 4rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-teal);
   }
 
-  .hiw-cta__title {
-    font-size: 2.5rem;
+  .cta-box h3 {
+    font-size: 2rem;
     color: var(--color-text);
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
   }
 
-  .hiw-cta__desc {
-    font-size: 1rem;
+  .cta-box p {
+    font-size: 1.1rem;
     color: var(--color-text-secondary);
-    margin-bottom: 2rem;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
   }
 
-  .hiw-cta__actions {
+  .cta-box__actions {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -301,13 +232,13 @@ import Hero from '../components/Hero.astro';
   }
 
   @media (max-width: 600px) {
-    .step {
-      grid-template-columns: 40px 1fr;
-      gap: 1rem;
-    }
-
     .principles__grid {
       grid-template-columns: 1fr;
+    }
+
+    .phase-card {
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 </style>

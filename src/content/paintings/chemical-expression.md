@@ -11,7 +11,7 @@ collaboratorHighlight:
   - "Each participant took ownership of an individual chemical node, painting their own color reaction onto the shared grid."
   - "Watching the masking tape peel away to reveal crisp geometric molecular boundaries was magical."
 photoAlbumUrl: "https://photos.app.goo.gl/o1WXWisY3bLzK8vk8"
-thumbnail: "/paintings/chemical-expression/thumb.jpg"
+thumbnail: "/paintings/chemical-expression/3.jpg"
 thumbnailAlt: "/paintings/chemical-expression/6a.jpg"
 layers:
   underpainting: "/paintings/chemical-expression/2.jpg"
@@ -38,6 +38,7 @@ phases:
       - "4b.jpg"
       - "4c.jpg"
       - "4d.jpg"
+      - "4e.jpg"
   - label: "Completion"
     description: "Final ensemble piece in studio light with tape removed, revealing clean geometric boundaries between participant expressions."
     images:

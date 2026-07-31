@@ -13,7 +13,7 @@ const featured = allPaintings
   .slice(0, 4);
 ---
 
-<Base title="MetaPainting — Be a Part of the Art">
+<Base title="Metapainting — Be a Part of the Art">
 
   <!-- SPLASH / HERO -->
   <section class="home-hero" id="hero">
@@ -22,7 +22,7 @@ const featured = allPaintings
     </div>
     <div class="home-hero__overlay"></div>
     <div class="home-hero__content">
-      <p class="home-hero__label font-display">MetaPainting</p>
+      <p class="home-hero__label font-hand">Metapainting</p>
       <h1 class="home-hero__title font-display">Be a Part<br/>of the Art</h1>
       <p class="home-hero__subtitle font-serif">
         Collaborative art featuring dozens — sometimes hundreds — of participants per piece.
@@ -157,7 +157,7 @@ const featured = allPaintings
             </svg>
           </div>
           <h3 class="triptych__title font-display">How It Works</h3>
-          <p class="triptych__desc">Learn the full MetaPainting method — from underpainting to masking to crowd collaboration.</p>
+          <p class="triptych__desc">Learn the full Metapainting method — from underpainting to masking to crowd collaboration.</p>
         </a>
 
         <a href="/commission" class="triptych__card card">
@@ -169,7 +169,7 @@ const featured = allPaintings
             </svg>
           </div>
           <h3 class="triptych__title font-display">Commission a Painting</h3>
-          <p class="triptych__desc">Bring the MetaPainting experience to your event, venue, or organization.</p>
+          <p class="triptych__desc">Bring the Metapainting experience to your event, venue, or organization.</p>
         </a>
 
         <a href="/templates" class="triptych__card card">
@@ -183,6 +183,47 @@ const featured = allPaintings
           <h3 class="triptych__title font-display">Download Templates</h3>
           <p class="triptych__desc">Get vector files and guides to start your own collaborative painting project.</p>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED LOCATIONS & EXHIBITIONS BAND -->
+  <section class="section" style="background: var(--color-surface-2); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <div class="container text-center reveal">
+      <span class="section-label font-hand">Exhibitions & Public Features</span>
+      <h2 class="section-title">On Display & In the Wild</h2>
+      <p class="section-subtitle" style="margin: 0 auto 2.5rem;">
+        From permanent bar displays to LED billboards and festival stage environments.
+      </p>
+
+      <div class="grid-3 stagger" style="text-align: left;">
+        <div class="card" style="padding: 1.75rem;">
+          <span class="font-hand" style="color: var(--color-teal); font-size: 1.2rem;">📍 Current Display</span>
+          <h3 class="font-display" style="font-size: 1.4rem; margin: 0.4rem 0;">Meander Art Bar (Baltimore)</h3>
+          <p class="font-serif" style="font-size: 0.95rem; color: var(--color-text-secondary);">
+            <em>Coded</em> is currently on featured physical display at Meander Art Bar in Baltimore, MD.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 1.75rem;">
+          <span class="font-hand" style="color: var(--color-teal); font-size: 1.2rem;">🌆 Public Digital Feature</span>
+          <h3 class="font-display" style="font-size: 1.4rem; margin: 0.4rem 0;">Baltimore Big LED Billboard</h3>
+          <p class="font-serif" style="font-size: 0.95rem; color: var(--color-text-secondary);">
+            Featured artwork displayed on Baltimore's high-profile LED public art display.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 1.75rem;">
+          <span class="font-hand" style="color: var(--color-teal); font-size: 1.2rem;">🔥 Immersive Festival Art</span>
+          <h3 class="font-display" style="font-size: 1.4rem; margin: 0.4rem 0;">Burning Man & Stage Design</h3>
+          <p class="font-serif" style="font-size: 0.95rem; color: var(--color-text-secondary);">
+            Immersive desert art activations, stage decoration, and collaborative crowd paintings.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="/gallery" class="btn btn--outline">Explore Exhibitions Gallery &rarr;</a>
       </div>
     </div>
   </section>
@@ -254,10 +295,11 @@ const featured = allPaintings
   }
 
   .home-hero__label {
-    font-size: 0.9rem;
-    letter-spacing: 0.3em;
+    font-family: var(--font-hand);
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
     color: var(--color-teal);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .home-hero__title {
@@ -282,6 +324,17 @@ const featured = allPaintings
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .home-hero .btn--outline {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+  }
+
+  .home-hero .btn--outline:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #1c1917;
   }
 
   .home-hero__scroll {

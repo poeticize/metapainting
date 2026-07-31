@@ -1,38 +1,39 @@
 /* ============================================
-   METAPAINTING — Global Design System
+   METAPAINTING — Gritty, Organic Design System
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
 
 /* --- Design Tokens --- */
 :root {
-  --color-bg: #0a0a0a;
-  --color-surface: #111111;
-  --color-surface-2: #1a1a1a;
-  --color-surface-3: #242424;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.15);
+  --color-bg: #f6f3ed;
+  --color-surface: #ffffff;
+  --color-surface-2: #eae5d9;
+  --color-surface-3: #ded8ca;
+  --color-border: rgba(28, 25, 23, 0.12);
+  --color-border-hover: rgba(28, 25, 23, 0.28);
 
-  --color-text: #f0ece6;
-  --color-text-secondary: #b0a898;
-  --color-text-muted: #6b6560;
+  --color-text: #1c1917;
+  --color-text-secondary: #57534e;
+  --color-text-muted: #78716c;
 
-  --color-teal: #2dd4a8;
-  --color-teal-dim: #008080;
-  --color-coral: #ff7f6b;
-  --color-coral-dim: #c45a48;
-  --color-violet: #bc13fe;
+  --color-teal: #0d9488;
+  --color-teal-dim: #115e59;
+  --color-coral: #b45309;
+  --color-coral-dim: #78350f;
+  --color-violet: #86198f;
 
-  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-hand: 'Caveat', cursive;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 1400px;
   --content-width: 900px;
-  --nav-height: 64px;
-  --section-gap: clamp(4rem, 10vw, 10rem);
-  --radius: 8px;
-  --radius-lg: 16px;
+  --nav-height: 70px;
+  --section-gap: clamp(3.5rem, 8vw, 8rem);
+  --radius: 10px;
+  --radius-lg: 18px;
 
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -53,8 +54,10 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 17px;
   overflow-x: hidden;
+  background-image: radial-gradient(rgba(28, 25, 23, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 img {
@@ -76,27 +79,17 @@ button {
 }
 
 h1, h2, h3, h4, h5 {
-  line-height: 1.1;
-  font-weight: 400;
-}
-
-/* --- Typography --- */
-.font-display {
+  line-height: 1.15;
+  font-weight: 600;
   font-family: var(--font-display);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
-}
-
-/* --- Layout --- */
+/* --- Layout Utils --- */
 .container {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  padding: 0 1.5rem;
 }
 
 .container--narrow {
@@ -112,11 +105,11 @@ h1, h2, h3, h4, h5 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.8rem;
   border-radius: var(--radius);
   transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   white-space: nowrap;
@@ -127,24 +120,25 @@ h1, h2, h3, h4, h5 {
 
 .btn--primary {
   background: var(--color-teal);
-  color: var(--color-bg);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
 }
 
 .btn--primary:hover {
-  background: var(--color-coral);
+  background: var(--color-teal-dim);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 127, 107, 0.25);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.35);
 }
 
 .btn--outline {
-  border: 1.5px solid var(--color-border-hover);
+  border: 1.5px solid var(--color-text);
   color: var(--color-text);
   background: transparent;
 }
 
 .btn--outline:hover {
-  border-color: var(--color-teal);
-  color: var(--color-teal);
+  background: var(--color-text);
+  color: var(--color-bg);
 }
 
 .btn--ghost {
@@ -174,27 +168,27 @@ h1, h2, h3, h4, h5 {
 
 /* --- Section Headings --- */
 .section-label {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
   color: var(--color-teal);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  letter-spacing: -0.01em;
   color: var(--color-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .section-subtitle {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
   color: var(--color-text-secondary);
-  max-width: 650px;
+  max-width: 680px;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -206,18 +200,19 @@ h1, h2, h3, h4, h5 {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition-base);
+  box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04);
 }
 
 .card:hover {
   border-color: var(--color-border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(28, 25, 23, 0.09);
 }
 
 /* --- Scroll Reveal --- */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(25px);
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -229,8 +224,16 @@ h1, h2, h3, h4, h5 {
 
 /* --- Blacklight Mode --- */
 body.blacklight {
-  --color-teal: #bc13fe;
-  --color-teal-dim: #8a0fbf;
+  background-color: #0d0a14;
+  color: #f3e8ff;
+  --color-surface: #171226;
+  --color-surface-2: #231b38;
+  --color-surface-3: #2e234a;
+  --color-border: rgba(243, 232, 255, 0.15);
+  --color-border-hover: rgba(243, 232, 255, 0.3);
+  --color-text: #f3e8ff;
+  --color-text-secondary: #d8b4fe;
+  --color-teal: #c084fc;
 }
 
 body.blacklight .gallery-card__image {
@@ -241,13 +244,13 @@ body.blacklight .gallery-card__image {
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 @media (max-width: 768px) {
@@ -264,16 +267,15 @@ body.blacklight .gallery-card__image {
 }
 
 .form-field label {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .form-field input,
-.form-field textarea,
-.form-field select {
+.form-field select,
+.form-field textarea {
   font-family: var(--font-body);
   font-size: 1rem;
   padding: 0.85rem 1rem;
@@ -285,40 +287,20 @@ body.blacklight .gallery-card__image {
 }
 
 .form-field input:focus,
-.form-field textarea:focus,
-.form-field select:focus {
+.form-field select:focus,
+.form-field textarea:focus {
   outline: none;
   border-color: var(--color-teal);
 }
 
 .form-field textarea {
-  resize: vertical;
   min-height: 140px;
+  resize: vertical;
 }
 
-/* --- Divider --- */
+/* --- Utility --- */
 .divider {
-  width: 60px;
-  height: 2px;
-  background: var(--color-teal);
+  height: 1px;
+  background: var(--color-border);
   margin: 2rem 0;
 }
-
-/* --- Stagger animation for children --- */
-.stagger > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.stagger.visible > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-.stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
-.stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
-.stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
-.stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
-.stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
