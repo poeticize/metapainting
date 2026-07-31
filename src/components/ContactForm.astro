@@ -10,21 +10,22 @@ const { formName = 'contact' } = Astro.props;
   <form
     class="contact-form"
     id="direct-contact-form"
+    onsubmit="return false;"
   >
     <div class="contact-form__row">
       <div class="form-field">
         <label for="name">Name</label>
-        <input type="text" id="name" name="Name" required placeholder="Your name" />
+        <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
       </div>
       <div class="form-field">
         <label for="email">Email</label>
-        <input type="email" id="email" name="Email" required placeholder="you@example.com" />
+        <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email" />
       </div>
     </div>
 
     <div class="form-field">
       <label for="inquiry">I'm Interested In</label>
-      <select id="inquiry" name="Inquiry Type">
+      <select id="inquiry" name="inquiry">
         <option value="General Inquiry">General Inquiry</option>
         <option value="Commissioning a Painting">Commissioning a Painting</option>
         <option value="Displaying Work at My Venue">Displaying Work at My Venue</option>
@@ -35,7 +36,7 @@ const { formName = 'contact' } = Astro.props;
 
     <div class="form-field">
       <label for="message">Message</label>
-      <textarea id="message" name="Message" required placeholder="Tell me about your vision..."></textarea>
+      <textarea id="message" name="message" required placeholder="Tell me about your vision..."></textarea>
     </div>
 
     <button type="submit" class="btn btn--primary" id="contact-submit-btn">Send Message</button>
@@ -49,13 +50,13 @@ const { formName = 'contact' } = Astro.props;
       </svg>
       <h3 class="font-display">Message Sent / Prepared!</h3>
       <p class="font-serif" id="contact-success-desc">
-        Your inquiry for <strong>poeticize@gmail.com</strong> is ready. Click below if your mail client did not launch automatically.
+        Your inquiry for <strong>poeticize@gmail.com</strong> has been prepared. Click below to open your email application.
       </p>
       <div class="contact-success__actions">
         <a id="fallback-email-link" href="mailto:poeticize@gmail.com" class="btn btn--primary">
-          Launch Email Client &rarr;
+          Open Email App &rarr;
         </a>
-        <button type="button" id="reset-contact-form-btn" class="btn btn--outline" style="margin-top: 1rem;">
+        <button type="button" id="reset-contact-form-btn" class="btn btn--outline" style="margin-top: 0.5rem;">
           Send Another Message
         </button>
       </div>
@@ -157,7 +158,7 @@ const { formName = 'contact' } = Astro.props;
         successBox.style.display = 'block';
       }
 
-      // Trigger mailto link
+      // Trigger mailto link directly via window.open / location
       window.location.href = mailtoUrl;
     });
 
