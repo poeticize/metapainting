@@ -10,9 +10,6 @@ const { formName = 'contact' } = Astro.props;
   <form
     class="contact-form"
     id="direct-contact-form"
-    action="mailto:poeticize@gmail.com"
-    method="POST"
-    enctype="text/plain"
   >
     <div class="contact-form__row">
       <div class="form-field">
@@ -46,18 +43,21 @@ const { formName = 'contact' } = Astro.props;
 
   <div class="contact-success card" id="contact-success-box" style="display: none;">
     <div class="contact-success__inner">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" stroke-width="2">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" stroke-width="2">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
         <polyline points="22 4 12 14.01 9 11.01"></polyline>
       </svg>
-      <h3 class="font-display">Message Prepared!</h3>
-      <p class="font-serif">
-        Your email client should open automatically to send this message to <strong>poeticize@gmail.com</strong>.
+      <h3 class="font-display">Message Sent / Prepared!</h3>
+      <p class="font-serif" id="contact-success-desc">
+        Your inquiry for <strong>poeticize@gmail.com</strong> is ready. Click below if your mail client did not launch automatically.
       </p>
       <div class="contact-success__actions">
         <a id="fallback-email-link" href="mailto:poeticize@gmail.com" class="btn btn--primary">
-          Open Email App &rarr;
+          Launch Email Client &rarr;
         </a>
+        <button type="button" id="reset-contact-form-btn" class="btn btn--outline" style="margin-top: 1rem;">
+          Send Another Message
+        </button>
       </div>
     </div>
   </div>
@@ -81,31 +81,39 @@ const { formName = 'contact' } = Astro.props;
   }
 
   .contact-success {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     background: var(--color-surface-2);
-    border: 1px solid var(--color-teal);
+    border: 1.5px solid var(--color-teal);
+    border-radius: var(--radius-lg);
   }
 
   .contact-success__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .contact-success h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--color-text);
+    margin: 0;
   }
 
   .contact-success p {
     color: var(--color-text-secondary);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0;
   }
 
   .contact-success__actions {
-    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
   }
 
   @media (max-width: 600px) {
@@ -120,10 +128,13 @@ const { formName = 'contact' } = Astro.props;
     const form = document.getElementById('direct-contact-form') as HTMLFormElement;
     const successBox = document.getElementById('contact-success-box') as HTMLElement;
     const fallbackLink = document.getElementById('fallback-email-link') as HTMLAnchorElement;
+    const resetBtn = document.getElementById('reset-contact-form-btn') as HTMLButtonElement;
 
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
       const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
       const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
       const inquiry = (document.getElementById('inquiry') as HTMLSelectElement)?.value || '';
@@ -138,13 +149,24 @@ const { formName = 'contact' } = Astro.props;
         fallbackLink.href = mailtoUrl;
       }
 
+      // Hide form, reset inputs, display success box
       form.style.display = 'none';
+      form.reset();
+
       if (successBox) {
         successBox.style.display = 'block';
       }
 
+      // Trigger mailto link
       window.location.href = mailtoUrl;
     });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (successBox) successBox.style.display = 'none';
+        form.style.display = 'flex';
+      });
+    }
   }
 
   initContactForm();
