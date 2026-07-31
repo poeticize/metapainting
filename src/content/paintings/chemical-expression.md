@@ -11,7 +11,7 @@ collaboratorHighlight:
   - "Each participant took ownership of an individual chemical node, painting their own color reaction onto the shared grid."
   - "Watching the masking tape peel away to reveal crisp geometric molecular boundaries was magical."
 photoAlbumUrl: "https://photos.app.goo.gl/o1WXWisY3bLzK8vk8"
-thumbnail: "/paintings/chemical-expression/5.jpg"
+thumbnail: "/paintings/chemical-expression/thumb.jpg"
 thumbnailAlt: "/paintings/chemical-expression/6a.jpg"
 layers:
   underpainting: "/paintings/chemical-expression/2.jpg"
