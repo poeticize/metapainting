@@ -118,8 +118,11 @@ h1, h2, h3, h4, h5 {
   text-transform: uppercase;
   padding: 0.85rem 2rem;
   border-radius: var(--radius);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   white-space: nowrap;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .btn--primary {
